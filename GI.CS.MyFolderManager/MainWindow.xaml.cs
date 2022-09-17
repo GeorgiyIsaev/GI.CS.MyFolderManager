@@ -57,10 +57,17 @@ namespace GI.CS.MyFolderManager
             System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(Lebel_EnterCatalog.Content.ToString());
             foreach (var item in dir.GetDirectories())
             {
-                tablesTest.Add(new TablesTest { NameCatalog = item.Name, /*Id = testP.Id, GroupName = testP.Group, TestName = testP.Name, Count = testP.Quests.Count()*/});
+                tablesTest.Add(new TablesTest { NameCatalog = item.Name, CountFile= ListCatalogCountFile (item.Name)});
             }    
             DataGrid_Catalog.ItemsSource = tablesTest;
             DataGrid_Catalog.Items.Refresh();
+        }
+
+        private int ListCatalogCountFile(string NameCatalog)
+        {
+            int i = new System.IO.DirectoryInfo(Lebel_EnterCatalog.Content + "\\" + NameCatalog)
+                .GetFiles("*.*", System.IO.SearchOption.AllDirectories).Length;                 
+            return i;
         }
 
     }
