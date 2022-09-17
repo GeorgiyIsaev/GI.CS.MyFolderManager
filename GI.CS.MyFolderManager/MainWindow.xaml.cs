@@ -30,11 +30,6 @@ namespace GI.CS.MyFolderManager
         }
 
         ObservableCollection<InfoCatalog> infoCatalog = new ObservableCollection<InfoCatalog>();
-        public class InfoCatalog
-        {
-            public String NameCatalog { get; set; }
-            public int CountFile { get; set; }   
-        }
 
 
 
