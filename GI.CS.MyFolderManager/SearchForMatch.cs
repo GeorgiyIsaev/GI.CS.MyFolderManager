@@ -9,14 +9,35 @@ using static GI.CS.MyFolderManager.MainWindow;
 namespace GI.CS.MyFolderManager
 {
     /*Класс для поиска совпадений*/
-    public class SearchForMatch
-    {
-        ObservableCollection<SearchForMatch> infoCatalogMatch = new ObservableCollection<SearchForMatch>();
-
+    public class Search
+    { 
         Dictionary<string, List<string>> catalogsKey = new Dictionary<string, List<string>>();
 
 
 
+
+        public class SearchForMatch
+        {
+            public String NameCatalog { get; set; }
+            public int CountFind{ get; set; }
+            public int CountItem { get; set; }
+
+            public SearchForMatch(Dictionary<string, List<string>> catalogsKey)
+            {
+                AddItem(catalogsKey);
+            }
+
+            public void AddItem(Dictionary<string, List<string>> catalogsKey)
+            {
+                var keys = catalogsKey.Keys;
+                foreach(var temp in keys)
+                {
+                    NameCatalog = temp;
+                    CountItem = (NameCatalog.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList()).Count;
+                    CountFind = catalogsKey[temp].Count;
+                }
+            }
+        }
 
 
         public void CreateNewFindMatcheCatalog(ObservableCollection<InfoCatalog> infoCatalog)
@@ -42,14 +63,7 @@ namespace GI.CS.MyFolderManager
                         AddDictionary(key, catalog.NameCatalog);
                     }
                 }
-
             }
-
-    
-
-
-            infoCatalogMatch
-
         }
 
 

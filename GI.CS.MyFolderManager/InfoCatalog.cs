@@ -11,6 +11,8 @@ namespace GI.CS.MyFolderManager
             public String NameCatalog { get; set; }
             public int CountFile { get; set; }
 
+
+
             public List<String> SplitName()
             {  
                 List<String> nameItem = new List<String>(NameCatalog.Split(' ', '-'));

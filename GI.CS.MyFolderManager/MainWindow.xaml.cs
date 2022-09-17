@@ -30,7 +30,7 @@ namespace GI.CS.MyFolderManager
         }
 
         ObservableCollection<InfoCatalog> infoCatalog = new ObservableCollection<InfoCatalog>();
-        ObservableCollection<SearchForMatch> infoCatalogMatch = new ObservableCollection<SearchForMatch>();
+        public ObservableCollection<Search.SearchForMatch> infoCatalogMatch = new ObservableCollection<Search.SearchForMatch>();
 
         private void Button_EnterCatalog_Click(object sender, RoutedEventArgs e)
         {
@@ -61,11 +61,15 @@ namespace GI.CS.MyFolderManager
         {
             ////////////////////////////////
             DataGrid_CatalogMatch.ItemsSource = null;
-            infoCatalogMatch = new ObservableCollection<InfoCatalog>();
+            infoCatalogMatch = new ObservableCollection<Search.SearchForMatch>();
             System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(Lebel_EnterCatalog.Content.ToString());
+            infoCatalogMatch.Add(new Search.SearchForMatch();
+
+
             foreach (var item in dir.GetDirectories())
             {
-                infoCatalogMatch.Add(new InfoCatalogMatch { NameCatalog = item.Name, CountFile = ListCatalogCountFile(item.Name) });
+               
+                infoCatalogMatch.Add(new Search.SearchForMatch();
             }
             DataGrid_CatalogMatch.ItemsSource = infoCatalog;
             DataGrid_CatalogMatch.Items.Refresh();

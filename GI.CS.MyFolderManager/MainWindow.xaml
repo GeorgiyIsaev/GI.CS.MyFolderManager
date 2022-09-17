@@ -33,7 +33,8 @@
                         </Style>
                     </DataGridTextColumn.CellStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Файлов" IsReadOnly="True" Binding="{Binding CountFile}" Width="270"  MaxWidth="300" MinWidth="50" />
+                <DataGridTextColumn Header="Файлов" IsReadOnly="True" Binding="{Binding CountItem}" Width="270"  MaxWidth="300" MinWidth="50" />
+                <DataGridTextColumn Header="Файлов" IsReadOnly="True" Binding="{Binding CountFind}" Width="270"  MaxWidth="300" MinWidth="50" />
             </DataGrid.Columns>
         </DataGrid>
 
