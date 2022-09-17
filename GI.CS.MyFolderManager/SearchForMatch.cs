@@ -38,30 +38,13 @@ namespace GI.CS.MyFolderManager
         }
 
         /*Класс для поиска совпадений*/
-        public static class SearchDic
+        public static class ParserDictionary
         {
-            public static Dictionary<string, List<string>>  catalogsKey = new Dictionary<string, List<string>>();
-
-
-            //public void CreateToObserv(Dictionary<string, List<string>> catalogsKey)
-            //{
-            //    infoCatalogMatch = new ObservableCollection<SearchForMatch>();
-            //    var keys = catalogsKey.Keys;
-            //    foreach (var temp in keys)
-            //    {
-            //        var NameCatalog = temp;
-            //        var CountItem = (NameCatalog.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList()).Count;
-            //        var CountFind = catalogsKey[temp].Count;
-
-            //        infoCatalogMatch.Add(new SearchForMatch(NameCatalog, CountItem, CountFind));
-            //    }
-            //}
-
-
-
-            public void CreateNewFindMatcheCatalog(List<InfoCatalog> infoCatalog)
+            public static Dictionary<string, List<string>>  catalogsKey;
+            public static void CreateNewFindMatcheCatalog(List<InfoCatalog> infoCatalog)
             {
                 /*Начинаем поиск схожих каталогов*/
+                catalogsKey = new Dictionary<string, List<string>>();
                 foreach (var catalog in infoCatalog)
                 {
                     var currentCatalog = catalog.SplitName();
@@ -84,7 +67,7 @@ namespace GI.CS.MyFolderManager
                 }
             }
 
-            public void AddDictionary(string key, string item)
+            public static void AddDictionary(string key, string item)
             {
 
                 if (!catalogsKey.ContainsKey(key))
@@ -93,9 +76,6 @@ namespace GI.CS.MyFolderManager
                 }
                 catalogsKey[key].Add(item);
             }
-
-            public String NameCatalog { get; set; }
-            public int CountFile { get; set; }
         }
     }
 }

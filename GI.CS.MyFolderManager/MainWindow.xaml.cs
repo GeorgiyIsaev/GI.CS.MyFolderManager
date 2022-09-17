@@ -68,7 +68,7 @@ namespace GI.CS.MyFolderManager
             DataGrid_CatalogMatch.ItemsSource = null;
 
             List<InfoCatalog> tempInfoCatalog = new List<InfoCatalog>(infoCatalog);
-            SearchDic.CreateNewFindMatcheCatalog(tempInfoCatalog); //создадим словарь на основе содержимого каталога
+            ParserDictionary.CreateNewFindMatcheCatalog(tempInfoCatalog); //создадим словарь на основе содержимого каталога
 
 
 
