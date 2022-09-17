@@ -33,8 +33,7 @@ namespace GI.CS.MyFolderManager
         public class InfoCatalog
         {
             public String NameCatalog { get; set; }
-            public int CountFile { get; set; }
-   
+            public int CountFile { get; set; }   
         }
 
 
@@ -52,7 +51,7 @@ namespace GI.CS.MyFolderManager
 
         private void ListCatalog(){
         
-            DataGrid_Catalog.ItemsSource = null; //сборс
+            DataGrid_Catalog.ItemsSource = null; 
             infoCatalog = new ObservableCollection<InfoCatalog>();
             System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(Lebel_EnterCatalog.Content.ToString());
             foreach (var item in dir.GetDirectories())
