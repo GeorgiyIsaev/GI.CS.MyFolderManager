@@ -41,7 +41,7 @@ namespace GI.CS.MyFolderManager
         public static class ParserDictionary
         {
             public static Dictionary<string, List<string>>  catalogsKey;
-            public static void CreateNewFindMatcheCatalog(List<InfoCatalog> infoCatalog)
+            public static void CreateNewFindMatcheCatalog(ObservableCollection<InfoCatalog> infoCatalog)
             {
                 /*Начинаем поиск схожих каталогов*/
                 catalogsKey = new Dictionary<string, List<string>>();
