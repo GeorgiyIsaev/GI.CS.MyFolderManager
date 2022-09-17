@@ -29,8 +29,8 @@ namespace GI.CS.MyFolderManager
         {            
         }
 
-        ObservableCollection<TablesTest> tablesTest = new ObservableCollection<TablesTest>();
-        public class TablesTest
+        ObservableCollection<InfoCatalog> infoCatalog = new ObservableCollection<InfoCatalog>();
+        public class InfoCatalog
         {
             public String NameCatalog { get; set; }
             public int CountFile { get; set; }
@@ -53,28 +53,28 @@ namespace GI.CS.MyFolderManager
         private void ListCatalog(){
         
             DataGrid_Catalog.ItemsSource = null; //сборс
-            tablesTest = new ObservableCollection<TablesTest>();
+            infoCatalog = new ObservableCollection<InfoCatalog>();
             System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(Lebel_EnterCatalog.Content.ToString());
             foreach (var item in dir.GetDirectories())
             {            
-                tablesTest.Add(new TablesTest { NameCatalog = item.Name, CountFile= ListCatalogCountFile (item.Name)});
+                infoCatalog.Add(new InfoCatalog { NameCatalog = item.Name, CountFile= ListCatalogCountFile(item.Name)});
             }    
-            DataGrid_Catalog.ItemsSource = tablesTest;
-            //DataGrid_Catalog.Items.Refresh();
+            DataGrid_Catalog.ItemsSource = infoCatalog;
+            DataGrid_Catalog.Items.Refresh();
         }
 
         private int ListCatalogCountFile(string NameCatalog)
         {
-            int i = new System.IO.DirectoryInfo(Lebel_EnterCatalog.Content + "\\" + NameCatalog)
+            int countFile = new System.IO.DirectoryInfo(Lebel_EnterCatalog.Content + "\\" + NameCatalog)
                 .GetFiles("*.*", System.IO.SearchOption.AllDirectories).Length;                 
-            return i;
+            return countFile;
         }
 
         private void DataGrid_Catalog_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         { 
        
             try{       
-                string forever_papka = Lebel_EnterCatalog.Content + "\\" + ((TablesTest)DataGrid_Catalog.SelectedItem).NameCatalog;
+                string forever_papka = Lebel_EnterCatalog.Content + "\\" + ((InfoCatalog)DataGrid_Catalog.SelectedItem).NameCatalog;
                 System.Diagnostics.Process.Start("explorer", forever_papka);
             }
             catch (Exception ex)
