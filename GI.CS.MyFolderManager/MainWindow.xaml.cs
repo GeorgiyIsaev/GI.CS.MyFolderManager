@@ -56,11 +56,11 @@ namespace GI.CS.MyFolderManager
             tablesTest = new ObservableCollection<TablesTest>();
             System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(Lebel_EnterCatalog.Content.ToString());
             foreach (var item in dir.GetDirectories())
-            {
+            {            
                 tablesTest.Add(new TablesTest { NameCatalog = item.Name, CountFile= ListCatalogCountFile (item.Name)});
             }    
             DataGrid_Catalog.ItemsSource = tablesTest;
-            DataGrid_Catalog.Items.Refresh();
+            //DataGrid_Catalog.Items.Refresh();
         }
 
         private int ListCatalogCountFile(string NameCatalog)
@@ -69,6 +69,21 @@ namespace GI.CS.MyFolderManager
                 .GetFiles("*.*", System.IO.SearchOption.AllDirectories).Length;                 
             return i;
         }
+
+        private void DataGrid_Catalog_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        { 
+       
+            try{       
+                string forever_papka = Lebel_EnterCatalog.Content + "\\" + ((TablesTest)DataGrid_Catalog.SelectedItem).NameCatalog;
+                System.Diagnostics.Process.Start("explorer", forever_papka);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Process.Start("explorer", Lebel_EnterCatalog.Content.ToString());
+            }
+        }
+
+       
 
     }
 }
