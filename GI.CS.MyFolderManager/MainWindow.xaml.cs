@@ -63,11 +63,8 @@ namespace GI.CS.MyFolderManager
 
       
         private void ListCatalogMatch()
-        {
-            ////////////////////////////////
-            DataGrid_CatalogMatch.ItemsSource = null;
-
-          
+        {         
+            DataGrid_CatalogMatch.ItemsSource = null;          
             ParserDictionary.CreateNewFindMatcheCatalog(infoCatalog); //создадим словарь на основе содержимого каталога
 
             foreach (KeyValuePair<string, List<string>> item in ParserDictionary.catalogsKey)

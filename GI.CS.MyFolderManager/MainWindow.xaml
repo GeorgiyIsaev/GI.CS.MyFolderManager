@@ -10,7 +10,7 @@
         <Button Name="Button_EnterCatalog" Content="Выбрать папку" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="121" Click="Button_EnterCatalog_Click"/>
         <Label Name="Lebel_EnterCatalog" Content="" HorizontalAlignment="Left" Margin="136,6,0,0" VerticalAlignment="Top" Width="235"/>
 
-        <DataGrid MouseDoubleClick="DataGrid_Catalog_MouseDoubleClick" Name="DataGrid_Catalog" HorizontalAlignment="Left" Height="373" Margin="10,37,0,0" VerticalAlignment="Top" Width="323">
+        <DataGrid MouseDoubleClick="DataGrid_Catalog_MouseDoubleClick" AutoGenerateColumns="False" Name="DataGrid_Catalog" HorizontalAlignment="Left" Height="373" Margin="10,37,0,0" VerticalAlignment="Top" Width="323">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название" IsReadOnly="True"   Binding="{Binding Path=NameCatalog}" Width="200"  MaxWidth="350" MinWidth="100">
                     <DataGridTextColumn.CellStyle>
@@ -24,7 +24,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <DataGrid MouseDoubleClick="DataGrid_CatalogMatch_MouseDoubleClick" x:Name="DataGrid_CatalogMatch" HorizontalAlignment="Left" Height="373" Margin="414,37,0,0" VerticalAlignment="Top" Width="323">
+        <DataGrid MouseDoubleClick="DataGrid_CatalogMatch_MouseDoubleClick"  AutoGenerateColumns="False" x:Name="DataGrid_CatalogMatch" HorizontalAlignment="Left" Height="373" Margin="414,37,0,0" VerticalAlignment="Top" Width="323">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название" IsReadOnly="True"   Binding="{Binding NameCatalog}" Width="200"  MaxWidth="350" MinWidth="100">
                     <DataGridTextColumn.CellStyle>
@@ -33,8 +33,8 @@
                         </Style>
                     </DataGridTextColumn.CellStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Файлов" IsReadOnly="True" Binding="{Binding CountItem}" Width="270"  MaxWidth="300" MinWidth="50" />
-                <DataGridTextColumn Header="Файлов" IsReadOnly="True" Binding="{Binding CountFind}" Width="270"  MaxWidth="300" MinWidth="50" />
+                <DataGridTextColumn Header="Слов" IsReadOnly="True" Binding="{Binding CountItem}"  MaxWidth="50" MinWidth="30" />
+                <DataGridTextColumn Header="Совпадений" IsReadOnly="True" Binding="{Binding CountFind}"   MaxWidth="50" MinWidth="30" />
             </DataGrid.Columns>
         </DataGrid>
 
