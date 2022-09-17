@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static GI.CS.MyFolderManager.MainWindow.SearchDic;
 
 namespace GI.CS.MyFolderManager
 {
@@ -57,36 +58,17 @@ namespace GI.CS.MyFolderManager
             DataGrid_Catalog.Items.Refresh();
         }
 
+
+      
         private void ListCatalogMatch()
         {
             ////////////////////////////////
             DataGrid_CatalogMatch.ItemsSource = null;
-            infoCatalogMatch = new ObservableCollection<Search.SearchForMatch>();
-
-            var keys = Search.catalogsKey.Keys;
-            foreach (var temp in keys)
-            {
-                NameCatalog = temp;
-                CountItem = (NameCatalog.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList()).Count;
-                CountFind = catalogsKey[temp].Count;
-            }
+            SearchDic.CreateToObserv();
 
 
 
-            System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(Lebel_EnterCatalog.Content.ToString());
-
-
-
-
-            infoCatalogMatch.Add(new Search.SearchForMatch();
-
-
-            foreach (var item in dir.GetDirectories())
-            {
-               
-                infoCatalogMatch.Add(new Search.SearchForMatch();
-            }
-            DataGrid_CatalogMatch.ItemsSource = infoCatalog;
+            DataGrid_CatalogMatch.ItemsSource = infoCatalogMatch;
             DataGrid_CatalogMatch.Items.Refresh();
         }
 
