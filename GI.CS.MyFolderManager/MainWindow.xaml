@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Button Name="Button_EnterCatalog" Content="Выбрать каталог" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="121" Click="Button_EnterCatalog_Click"/>
+        <Label Name="Lebel_EnterCatalog" Content="" HorizontalAlignment="Left" Margin="136,6,0,0" VerticalAlignment="Top" Width="235"/>
+
     </Grid>
 </Window>
