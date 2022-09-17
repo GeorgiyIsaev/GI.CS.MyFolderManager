@@ -10,34 +10,42 @@ namespace GI.CS.MyFolderManager
 {
     /*Класс для поиска совпадений*/
     public class Search
-    { 
-        Dictionary<string, List<string>> catalogsKey = new Dictionary<string, List<string>>();
+    {
+        public Dictionary<string, List<string>> catalogsKey = new Dictionary<string, List<string>>();
 
-
+        public ObservableCollection<SearchForMatch> infoCatalogMatch = new ObservableCollection<SearchForMatch>();
 
 
         public class SearchForMatch
         {
+            public SearchForMatch(string nameCatalog, int countFind, int countItem)
+            {
+                NameCatalog = nameCatalog;
+                CountFind = countFind;
+                CountItem = countItem;
+            }
+
             public String NameCatalog { get; set; }
             public int CountFind{ get; set; }
             public int CountItem { get; set; }
+       
+        }
 
-            public SearchForMatch(Dictionary<string, List<string>> catalogsKey)
-            {
-                AddItem(catalogsKey);
-            }
 
-            public void AddItem(Dictionary<string, List<string>> catalogsKey)
+        public void CreateToObserv(Dictionary<string, List<string>> catalogsKey)
+        {
+            infoCatalogMatch = new ObservableCollection<SearchForMatch>();
+            var keys = catalogsKey.Keys;
+            foreach (var temp in keys)
             {
-                var keys = catalogsKey.Keys;
-                foreach(var temp in keys)
-                {
-                    NameCatalog = temp;
-                    CountItem = (NameCatalog.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList()).Count;
-                    CountFind = catalogsKey[temp].Count;
-                }
+                var NameCatalog = temp;
+                var CountItem = (NameCatalog.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList()).Count;
+                var CountFind = catalogsKey[temp].Count;
+
+                infoCatalogMatch.Add(new SearchForMatch(NameCatalog, CountItem, CountFind));
             }
         }
+
 
 
         public void CreateNewFindMatcheCatalog(ObservableCollection<InfoCatalog> infoCatalog)
