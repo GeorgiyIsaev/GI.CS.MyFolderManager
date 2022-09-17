@@ -37,6 +37,8 @@
                 <DataGridTextColumn Header="Совпадений" IsReadOnly="True" Binding="{Binding CountFind}"   MaxWidth="50" MinWidth="30" />
             </DataGrid.Columns>
         </DataGrid>
+        <Button Name="Button_DeleteMinCount" Content="Исключить" Click="Button_DeleteMinCount_Click" HorizontalAlignment="Left" Height="22" Margin="414,6,0,0" VerticalAlignment="Top" Width="163"/>
+        <TextBox Name="TextBox_DeleteMinCount"  HorizontalAlignment="Left" Height="23" Margin="593,5,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>

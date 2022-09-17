@@ -18,8 +18,11 @@ using System.Windows.Shapes;
 
 namespace GI.CS.MyFolderManager
 {
+
     public partial class MainWindow : Window
     {
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -67,6 +70,7 @@ namespace GI.CS.MyFolderManager
             DataGrid_CatalogMatch.ItemsSource = null;          
             ParserDictionary.CreateNewFindMatcheCatalog(infoCatalog); //создадим словарь на основе содержимого каталога
 
+            infoCatalogMatch = new ObservableCollection<SearchForMatch>();
             foreach (KeyValuePair<string, List<string>> item in ParserDictionary.catalogsKey)
             {
                 infoCatalogMatch.Add(new SearchForMatch(item));
@@ -101,6 +105,28 @@ namespace GI.CS.MyFolderManager
         private void DataGrid_CatalogMatch_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
 
+        }
+
+        private void Button_DeleteMinCount_Click(object sender, RoutedEventArgs e)
+        {
+            DataGrid_CatalogMatch.ItemsSource = null;
+            ParserDictionary.CreateNewFindMatcheCatalog(infoCatalog); //создадим словарь на основе содержимого каталога
+
+            infoCatalogMatch = new ObservableCollection<SearchForMatch>();
+            int inputCountWords;
+            bool isNumeric = int.TryParse(TextBox_DeleteMinCount.Text, out inputCountWords);
+            if (!isNumeric) inputCountWords = 0;
+
+            foreach (KeyValuePair<string, List<string>> item in ParserDictionary.catalogsKey)
+            {
+                SearchForMatch temp = new SearchForMatch(item);
+
+                if (temp.CountItem <= inputCountWords) continue;
+                infoCatalogMatch.Add(new SearchForMatch(item));
+            }
+
+            DataGrid_CatalogMatch.ItemsSource = infoCatalogMatch;
+            DataGrid_CatalogMatch.Items.Refresh();
         }
     }
 }

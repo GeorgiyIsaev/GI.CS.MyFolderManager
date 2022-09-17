@@ -55,7 +55,7 @@ namespace GI.CS.MyFolderManager
                             key += currentCatalog[tempCur];
                             AddDictionary(key, catalog.NameCatalog);
                             tempCur++;
-                            if (tempCur >= count - 1) break;
+                            if (tempCur >= count) break;
                             key += " ";
                         }
                     }
