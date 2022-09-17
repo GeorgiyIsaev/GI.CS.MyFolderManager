@@ -51,8 +51,8 @@ namespace GI.CS.MyFolderManager
             System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(Lebel_EnterCatalog.Content.ToString());
             foreach (var item in dir.GetDirectories())
             {            
-                infoCatalog.Add(new InfoCatalog { NameCatalog = item.Name, CountFile= ListCatalogCountFile(item.Name)});
-            }    
+                infoCatalog.Add(new InfoCatalog { NameCatalog = item.Name, CountFile= ListCatalogCountFile(item.Name)});    
+            }
             DataGrid_Catalog.ItemsSource = infoCatalog;
             DataGrid_Catalog.Items.Refresh();
         }
@@ -67,9 +67,10 @@ namespace GI.CS.MyFolderManager
         private void DataGrid_Catalog_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         { 
        
-            try{       
+            try{              
                 string forever_papka = Lebel_EnterCatalog.Content + "\\" + ((InfoCatalog)DataGrid_Catalog.SelectedItem).NameCatalog;
                 System.Diagnostics.Process.Start("explorer", forever_papka);
+
             }
             catch (Exception ex)
             {

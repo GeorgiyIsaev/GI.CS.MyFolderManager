@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GI.CS.MyFolderManager
 {
-
+    /*Класс для поиска совпадений*/
     public class SearchForMatch
     {
     }
