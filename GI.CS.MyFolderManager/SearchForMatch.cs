@@ -32,7 +32,14 @@ namespace GI.CS.MyFolderManager
                 {
                     for (int j = i; i < count-1; j++)
                     {
-                        catalogsKey.Add((currentCatalog[j] + currentCatalog[j + i]), catalog.NameCatalog);
+                        string key = "";
+                        int tempCur = j;
+                        while (true)
+                        {
+                            key += currentCatalog[tempCur];
+                            if (tempCur == i) break;
+                        }
+                        AddDictionary(key, catalog.NameCatalog);
                     }
                 }
 
