@@ -24,5 +24,18 @@
             </DataGrid.Columns>
         </DataGrid>
 
+        <DataGrid MouseDoubleClick="DataGrid_CatalogMatch_MouseDoubleClick" x:Name="DataGrid_CatalogMatch" HorizontalAlignment="Left" Height="373" Margin="414,37,0,0" VerticalAlignment="Top" Width="323">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" IsReadOnly="True"   Binding="{Binding NameCatalog}" Width="200"  MaxWidth="350" MinWidth="100">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <Setter Property="ToolTip" Value="{Binding NameCatalog}" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Файлов" IsReadOnly="True" Binding="{Binding CountFile}" Width="270"  MaxWidth="300" MinWidth="50" />
+            </DataGrid.Columns>
+        </DataGrid>
+
     </Grid>
 </Window>

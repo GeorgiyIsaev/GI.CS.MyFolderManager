@@ -24,13 +24,6 @@ namespace GI.CS.MyFolderManager
             {
                 return s.Length < 1;
             }
-
-
-        }
-
-
-
-       
-
+        }   
     }
 }

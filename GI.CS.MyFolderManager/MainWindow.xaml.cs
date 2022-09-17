@@ -30,8 +30,7 @@ namespace GI.CS.MyFolderManager
         }
 
         ObservableCollection<InfoCatalog> infoCatalog = new ObservableCollection<InfoCatalog>();
-
-
+        ObservableCollection<SearchForMatch> infoCatalogMatch = new ObservableCollection<SearchForMatch>();
 
         private void Button_EnterCatalog_Click(object sender, RoutedEventArgs e)
         {
@@ -41,6 +40,7 @@ namespace GI.CS.MyFolderManager
             {
                 Lebel_EnterCatalog.Content = dialog.SelectedPath;
                 ListCatalog();
+                ListCatalogMatch();
             }
         }
 
@@ -56,6 +56,21 @@ namespace GI.CS.MyFolderManager
             DataGrid_Catalog.ItemsSource = infoCatalog;
             DataGrid_Catalog.Items.Refresh();
         }
+
+        private void ListCatalogMatch()
+        {
+            ////////////////////////////////
+            DataGrid_CatalogMatch.ItemsSource = null;
+            infoCatalogMatch = new ObservableCollection<InfoCatalog>();
+            System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(Lebel_EnterCatalog.Content.ToString());
+            foreach (var item in dir.GetDirectories())
+            {
+                infoCatalogMatch.Add(new InfoCatalogMatch { NameCatalog = item.Name, CountFile = ListCatalogCountFile(item.Name) });
+            }
+            DataGrid_CatalogMatch.ItemsSource = infoCatalog;
+            DataGrid_CatalogMatch.Items.Refresh();
+        }
+
 
         private int ListCatalogCountFile(string NameCatalog)
         {
@@ -78,7 +93,9 @@ namespace GI.CS.MyFolderManager
             }
         }
 
-       
+        private void DataGrid_CatalogMatch_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
 
+        }
     }
 }
