@@ -33,5 +33,8 @@ namespace GI.CS.MyFolderManager
                 Lebel_EnterCatalog.Content = dialog.SelectedPath;
             }           
         }
+
+
+
     }
 }

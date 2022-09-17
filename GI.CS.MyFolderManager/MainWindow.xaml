@@ -7,8 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Name="Button_EnterCatalog" Content="Выбрать каталог" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="121" Click="Button_EnterCatalog_Click"/>
+        <Button Name="Button_EnterCatalog" Content="Выбрать папку" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="121" Click="Button_EnterCatalog_Click"/>
         <Label Name="Lebel_EnterCatalog" Content="" HorizontalAlignment="Left" Margin="136,6,0,0" VerticalAlignment="Top" Width="235"/>
+        
+        <DataGrid HorizontalAlignment="Left" Height="373" Margin="10,37,0,0" VerticalAlignment="Top" Width="323">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" IsReadOnly="True"  Binding="{Binding Path=test.Id}" Width="200"  MaxWidth="350" MinWidth="100"/>
+                <DataGridTextColumn Header="Файлов" IsReadOnly="True" Binding="{Binding Path=test.Group}" Width="270"  MaxWidth="300" MinWidth="50" />           
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </Window>
