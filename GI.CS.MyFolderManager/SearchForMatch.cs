@@ -16,25 +16,21 @@ namespace GI.CS.MyFolderManager
         /*Класс коллекции*/
         public class SearchForMatch
         {
-            public SearchForMatch(Dictionary<string, List<string>> catalogsKey)
+            public SearchForMatch(KeyValuePair<string, List<string>> item)
             {
-                CatalogsKey = catalogsKey;
-                var keys = catalogsKey.Keys;
-                foreach (var temp in keys)
-                {
-                    NameCatalog = temp; //ключ-название группы катлогов
-                    CountItem = (NameCatalog.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList()).Count;
-                    CountFind = catalogsKey[temp].Count;
-                }
+                Item = item;
+   
+                NameCatalog = item.Key; //ключ-название группы катлогов
+                CountItem = (NameCatalog.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList()).Count;
+                CountFind = item.Value.Count;
             }
 
             public String NameCatalog { get; set; }
             public int CountFind { get; set; }
             public int CountItem { get; set; }
-
-            public List<string> ListFolderName { get { return CatalogsKey[NameCatalog]; } }
-
-            Dictionary<string, List<string>> CatalogsKey;
+            
+            public List<string> ListFolderName { get { return Item.Value; } }
+            KeyValuePair<string, List<string>> Item;
         }
 
         /*Класс для поиска совпадений*/
@@ -52,16 +48,14 @@ namespace GI.CS.MyFolderManager
 
                     for (int i = 0; i < count; i++)
                     {
-                        for (int j = i; i < count - 1; j++)
+                        string key = "";
+                        int tempCur = i;
+                        while (true)
                         {
-                            string key = "";
-                            int tempCur = j;
-                            while (true)
-                            {
-                                key += currentCatalog[tempCur];
-                                if (tempCur == i) break;
-                            }
+                            key += currentCatalog[tempCur];
                             AddDictionary(key, catalog.NameCatalog);
+                            tempCur++;
+                            if (tempCur >= count - 1) break;
                         }
                     }
                 }

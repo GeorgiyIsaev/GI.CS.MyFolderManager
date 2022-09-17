@@ -70,7 +70,10 @@ namespace GI.CS.MyFolderManager
           
             ParserDictionary.CreateNewFindMatcheCatalog(infoCatalog); //создадим словарь на основе содержимого каталога
 
-
+            foreach (KeyValuePair<string, List<string>> item in ParserDictionary.catalogsKey)
+            {
+                infoCatalogMatch.Add(new SearchForMatch(item));
+            }
 
             DataGrid_CatalogMatch.ItemsSource = infoCatalogMatch;
             DataGrid_CatalogMatch.Items.Refresh();
