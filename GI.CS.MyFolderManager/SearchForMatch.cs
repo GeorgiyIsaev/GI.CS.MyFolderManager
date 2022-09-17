@@ -4,101 +4,99 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static GI.CS.MyFolderManager.MainWindow;
 
-public partial class MainWindow
+
+namespace GI.CS.MyFolderManager
 {
-    /*Коллекция*/
-    public ObservableCollection<SearchForMatch> infoCatalogMatch = new ObservableCollection<SearchForMatch>();
-
-    /*Класс коллекции*/
-    public class SearchForMatch
+    public partial class MainWindow
     {
-        public SearchForMatch(Dictionary<string, List<string>> catalogsKey)
-        {            
-            CatalogsKey = catalogsKey;          
-            var keys = catalogsKey.Keys;
-            foreach (var temp in keys)
-            {
-                NameCatalog = temp; //ключ-название группы катлогов
-                CountItem = (NameCatalog.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList()).Count;
-                CountFind = catalogsKey[temp].Count;
-            }
-        }     
+        /*Коллекция*/
+        public ObservableCollection<SearchForMatch> infoCatalogMatch = new ObservableCollection<SearchForMatch>();
 
-        public String NameCatalog { get; set; }
-        public int CountFind { get; set; }
-        public int CountItem { get; set; }
-
-        public List<string> ListFolderName { get { return CatalogsKey[NameCatalog]; } }
-
-        Dictionary<string, List<string>> CatalogsKey;
-    }
-
-    /*Класс для поиска совпадений*/
-    public class SearchDic
-    {
-        public Dictionary<string, List<string>> catalogsKey = new Dictionary<string, List<string>>();
-    
-
-        public void CreateToObserv(Dictionary<string, List<string>> catalogsKey)
+        /*Класс коллекции*/
+        public class SearchForMatch
         {
-            infoCatalogMatch = new ObservableCollection<SearchForMatch>();
-            var keys = catalogsKey.Keys;
-            foreach (var temp in keys)
+            public SearchForMatch(Dictionary<string, List<string>> catalogsKey)
             {
-                var NameCatalog = temp;
-                var CountItem = (NameCatalog.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList()).Count;
-                var CountFind = catalogsKey[temp].Count;
-
-                infoCatalogMatch.Add(new SearchForMatch(NameCatalog, CountItem, CountFind));
+                CatalogsKey = catalogsKey;
+                var keys = catalogsKey.Keys;
+                foreach (var temp in keys)
+                {
+                    NameCatalog = temp; //ключ-название группы катлогов
+                    CountItem = (NameCatalog.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList()).Count;
+                    CountFind = catalogsKey[temp].Count;
+                }
             }
+
+            public String NameCatalog { get; set; }
+            public int CountFind { get; set; }
+            public int CountItem { get; set; }
+
+            public List<string> ListFolderName { get { return CatalogsKey[NameCatalog]; } }
+
+            Dictionary<string, List<string>> CatalogsKey;
         }
 
-
-
-        public void CreateNewFindMatcheCatalog(ObservableCollection<InfoCatalog> infoCatalog)
+        /*Класс для поиска совпадений*/
+        public static class SearchDic
         {
-            /*Начинаем поиск схожих каталогов*/
-            foreach (var catalog in infoCatalog)
-            {
-                var currentCatalog = catalog.SplitName();
-                int count = currentCatalog.Count;
+            public static Dictionary<string, List<string>>  catalogsKey = new Dictionary<string, List<string>>();
 
-                for (int i = 0; i < count; i++)
+
+            //public void CreateToObserv(Dictionary<string, List<string>> catalogsKey)
+            //{
+            //    infoCatalogMatch = new ObservableCollection<SearchForMatch>();
+            //    var keys = catalogsKey.Keys;
+            //    foreach (var temp in keys)
+            //    {
+            //        var NameCatalog = temp;
+            //        var CountItem = (NameCatalog.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList()).Count;
+            //        var CountFind = catalogsKey[temp].Count;
+
+            //        infoCatalogMatch.Add(new SearchForMatch(NameCatalog, CountItem, CountFind));
+            //    }
+            //}
+
+
+
+            public void CreateNewFindMatcheCatalog(List<InfoCatalog> infoCatalog)
+            {
+                /*Начинаем поиск схожих каталогов*/
+                foreach (var catalog in infoCatalog)
                 {
-                    for (int j = i; i < count - 1; j++)
+                    var currentCatalog = catalog.SplitName();
+                    int count = currentCatalog.Count;
+
+                    for (int i = 0; i < count; i++)
                     {
-                        string key = "";
-                        int tempCur = j;
-                        while (true)
+                        for (int j = i; i < count - 1; j++)
                         {
-                            key += currentCatalog[tempCur];
-                            if (tempCur == i) break;
+                            string key = "";
+                            int tempCur = j;
+                            while (true)
+                            {
+                                key += currentCatalog[tempCur];
+                                if (tempCur == i) break;
+                            }
+                            AddDictionary(key, catalog.NameCatalog);
                         }
-                        AddDictionary(key, catalog.NameCatalog);
                     }
                 }
             }
-        }
 
-        internal static void CreateToObserv()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddDictionary(string key, string item)
-        {
-
-            if (!catalogsKey.ContainsKey(key))
+            public void AddDictionary(string key, string item)
             {
-                catalogsKey[key] = new List<string>();
-            }
-            catalogsKey[key].Add(item);
-        }
 
-        public String NameCatalog { get; set; }
-        public int CountFile { get; set; }
+                if (!catalogsKey.ContainsKey(key))
+                {
+                    catalogsKey[key] = new List<string>();
+                }
+                catalogsKey[key].Add(item);
+            }
+
+            public String NameCatalog { get; set; }
+            public int CountFile { get; set; }
+        }
     }
-} 
+}
 

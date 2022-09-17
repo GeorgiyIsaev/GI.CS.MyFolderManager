@@ -14,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static GI.CS.MyFolderManager.MainWindow.SearchDic;
+
 
 namespace GI.CS.MyFolderManager
 {
@@ -56,6 +56,8 @@ namespace GI.CS.MyFolderManager
             }
             DataGrid_Catalog.ItemsSource = infoCatalog;
             DataGrid_Catalog.Items.Refresh();
+
+
         }
 
 
@@ -64,7 +66,9 @@ namespace GI.CS.MyFolderManager
         {
             ////////////////////////////////
             DataGrid_CatalogMatch.ItemsSource = null;
-            SearchDic.CreateToObserv();
+
+            List<InfoCatalog> tempInfoCatalog = new List<InfoCatalog>(infoCatalog);
+            SearchDic.CreateNewFindMatcheCatalog(tempInfoCatalog); //создадим словарь на основе содержимого каталога
 
 
 
