@@ -34,7 +34,8 @@ namespace GI.CS.MyFolderManager
         }
 
         ObservableCollection<InfoCatalog> infoCatalog = new ObservableCollection<InfoCatalog>();
-       // public ObservableCollection<Search.SearchForMatch> infoCatalogMatch = new ObservableCollection<Search.SearchForMatch>();
+        ObservableCollection<InfoCatalog> infoCatalogSearch = new ObservableCollection<InfoCatalog>();
+        // public ObservableCollection<Search.SearchForMatch> infoCatalogMatch = new ObservableCollection<Search.SearchForMatch>();
 
         private void Button_EnterCatalog_Click(object sender, RoutedEventArgs e)
         {
@@ -104,7 +105,20 @@ namespace GI.CS.MyFolderManager
 
         private void DataGrid_CatalogMatch_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            /*Показать папки имеющие повторы*/
 
+            DataGrid_Catalog.ItemsSource = null;
+            infoCatalogSearch = new ObservableCollection<InfoCatalog>();
+                        
+            SearchForMatch temp = (SearchForMatch)DataGrid_CatalogMatch.SelectedItem;
+
+            foreach (var item in temp.ListFolderName)
+            {
+                infoCatalogSearch.Add(new InfoCatalog { NameCatalog = item, CountFile = ListCatalogCountFile(item) });
+            }
+
+            DataGrid_Catalog.ItemsSource = infoCatalogSearch;
+            DataGrid_Catalog.Items.Refresh();
         }
 
         private void Button_DeleteMinCount_Click(object sender, RoutedEventArgs e)
