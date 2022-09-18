@@ -74,6 +74,8 @@ namespace GI.CS.MyFolderManager
             infoCatalogMatch = new ObservableCollection<SearchForMatch>();
             foreach (KeyValuePair<string, List<string>> item in ParserDictionary.catalogsKey)
             {
+                SearchForMatch temp = new SearchForMatch(item);
+                if (temp.CountFind <= 1) continue;
                 infoCatalogMatch.Add(new SearchForMatch(item));
             }
 
@@ -136,6 +138,8 @@ namespace GI.CS.MyFolderManager
                 SearchForMatch temp = new SearchForMatch(item);
 
                 if (temp.CountItem <= inputCountWords) continue;
+                if (temp.CountFind <= 1) continue;
+
                 infoCatalogMatch.Add(new SearchForMatch(item));
             }
 
