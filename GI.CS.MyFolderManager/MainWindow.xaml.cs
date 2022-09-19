@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -97,7 +98,7 @@ namespace GI.CS.MyFolderManager
 
             try {
                 string forever_papka = Lebel_EnterCatalog.Content + "\\" + ((InfoCatalog)DataGrid_Catalog.SelectedItem).NameCatalog;
-                System.Diagnostics.Process.Start("explorer", forever_papka);
+               // System.Diagnostics.Process.Start("explorer", forever_papka);
                 GetListImage(forever_papka);
             }
             catch (Exception ex)
@@ -157,50 +158,75 @@ namespace GI.CS.MyFolderManager
             {
                 string text = "";     
                 string[] files = System.IO.Directory.GetFiles(nameCatalog);
+                   int column = 0;
+                int row = 0;
                 foreach (string s in files)
                 {
-                    text += s + "\n";              
+                    text += s + "\n";
+                    if(column >=5)
+                    {
+                        column = 0; row++;
+
+                        Image_Board.RowDefinitions.Add(new RowDefinition());
+
+                        
+                    }
+                 
+                    AddImage2(s, column++, row);
                 }
                 MessageBox.Show("" + text);
             }
         }
 
+        private void AddImage2(string nameImage, int column, int row)
+        {
+            Image img = new Image();
 
+            Grid.SetColumn(img, column);
+            Grid.SetRow(img, row);
+
+            Uri uri = new Uri(nameImage);
+            img.Source = new System.Windows.Media.Imaging.BitmapImage(uri);
+
+            Image_Board.Children.Add(img);
+
+        }
 
 
         private void AddImage(string nameImage)
-        { 
-        }
+        {
+
             /*Создадим картинку*/
-  //          Image img = new Image();
-  //          Uri uri = new Uri(@"C:\d1.jpg");
-  //          img.Source = new System.Windows.Media.Imaging.BitmapImage(uri);
+            Image img = new Image();
+            Uri uri = new Uri(nameImage);
+            img.Source = new System.Windows.Media.Imaging.BitmapImage(uri);
 
-  //          DataGrid dg = new DataGrid();
-  //          grid1.Children.Add(dg);
-           
+            DataGrid dg = new DataGrid();
+            Image_Board.Children.Add(dg);
 
+            //DataGrid
 
-  //DataTable dt = new DataTable();
+            DataTable dt = new DataTable();
 
-  //          dt.Columns.Add("Column1");
-  //          dt.Columns.Add("Column2");
-  //          dt.Columns.Add("Column3");
-  //          dt.Columns.Add("Column4", typeof(Image)); // type of image!
+            dt.Columns.Add("Column1");
+            dt.Columns.Add("Column2");
+            dt.Columns.Add("Column3");
+            dt.Columns.Add("Column4", typeof(Image)); // type of image!
 
-  //          DataRow dr = dt.NewRow();
-  //          dr[0] = "aaa";
-  //          dr[1] = "bbb";
-  //          dr[2] = "ccc";
-  //          dr[3] = img; // add a sample image
+            DataRow dr = dt.NewRow();
+            dr[0] = "aaa";
+            dr[1] = "bbb";
+            dr[2] = "ccc";
+            dr[3] = img; // add a sample image
 
-  //          dt.Rows.Add(dr);
-
-
-  //          dg.ItemsSource = dt.DefaultView;
+            dt.Rows.Add(dr);
 
 
+            dg.ItemsSource = dt.DefaultView;
 
+           // Image_Board.Children.Add(dt);
+
+        }
 
             //    Image finalImage = new Image();
             //    finalImage.Width = 80;
