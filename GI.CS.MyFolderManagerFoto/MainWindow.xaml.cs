@@ -34,5 +34,18 @@ namespace GI.CS.MyFolderManagerFoto
         {
 
         }
+
+        private void Button_V_Click(object sender, RoutedEventArgs e)
+        {  /*Достает колонку с повторами*/
+
+            if(Column_0.Width.Value > 0)
+            {
+                Column_0.Width = new GridLength(0);
+            }
+            else
+            {
+                Column_0.Width = new GridLength(300);
+            }
+        }
     }
 }
