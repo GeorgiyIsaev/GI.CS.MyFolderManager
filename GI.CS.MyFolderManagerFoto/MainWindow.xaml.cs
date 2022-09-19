@@ -25,8 +25,15 @@ namespace GI.CS.MyFolderManagerFoto
             InitializeComponent();
             Column_0.Width = new GridLength(0);
         }
-  
 
+        private void Button_DeleteMinCount_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
+
+        private void DataGrid_CatalogMatch_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

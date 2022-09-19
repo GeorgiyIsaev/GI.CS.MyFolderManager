@@ -9,7 +9,7 @@
         >
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Name="Column_0" Width="100" />
+            <ColumnDefinition Name="Column_0" Width="400" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="300" />
             <ColumnDefinition Width="Auto" />
@@ -18,6 +18,21 @@
 
         <Grid Grid.Column="0">
             <!--Грид для поиска повторов-->
+            <Button Name="Button_DeleteMinCount" Content="Слов больше" Click="Button_DeleteMinCount_Click" Height="22"  Width="163"/>
+            <TextBox Name="TextBox_DeleteMinCount"  HorizontalAlignment="Left" TextWrapping="Wrap" Text="0" Height="22"  Width="120"/>
+            <DataGrid MouseDoubleClick="DataGrid_CatalogMatch_MouseDoubleClick" AutoGenerateColumns="False" x:Name="DataGrid_CatalogMatch" Margin="10,40,10,10">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Название" IsReadOnly="True"   Binding="{Binding NameCatalog}" Width="200"  MaxWidth="350" MinWidth="100">
+                        <DataGridTextColumn.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Setter Property="ToolTip" Value="{Binding NameCatalog}" />
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Слов" IsReadOnly="True" Binding="{Binding CountItem}"  MaxWidth="50" MinWidth="30" />
+                    <DataGridTextColumn Header="Папок" IsReadOnly="True" Binding="{Binding CountFind}"   MaxWidth="50" MinWidth="30" />
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
         <GridSplitter Grid.Column="1" ShowsPreview="False" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
 
