@@ -189,9 +189,12 @@ namespace GI.CS.MyFolderManager
             Grid.SetRow(img, row);
 
             Uri uri = new Uri(nameImage);
-            img.Source = new System.Windows.Media.Imaging.BitmapImage(uri);
 
-           
+            img.Source = new System.Windows.Media.Imaging.BitmapImage(uri);
+            img.Margin = new Thickness(5, 5, 5, 5);
+
+        
+
 
             Image_Board.Children.Add(img);
 
@@ -205,6 +208,7 @@ namespace GI.CS.MyFolderManager
             Image img = new Image();
             Uri uri = new Uri(nameImage);
             img.Source = new System.Windows.Media.Imaging.BitmapImage(uri);
+
 
             DataGrid dg = new DataGrid();
             Image_Board.Children.Add(dg);
