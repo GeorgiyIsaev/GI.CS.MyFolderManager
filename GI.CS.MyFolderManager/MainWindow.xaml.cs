@@ -160,6 +160,9 @@ namespace GI.CS.MyFolderManager
                 string[] files = System.IO.Directory.GetFiles(nameCatalog);
                    int column = 0;
                 int row = 0;
+
+                Image_Board.Children.Clear(); //очистить все содержимое грида
+
                 foreach (string s in files)
                 {
                     text += s + "\n";
