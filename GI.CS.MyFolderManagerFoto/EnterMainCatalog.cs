@@ -19,11 +19,10 @@ namespace GI.CS.MyFolderManagerFoto
             }
         }
 
-        ObservableCollection<InfoCatalog> infoCatalog = new ObservableCollection<InfoCatalog>();
-
+        ObservableCollection<InfoCatalog> infoCatalog = new ObservableCollection<InfoCatalog>(); //Каталог папок внтри папки
         private void ListCatalog()
         {
-
+            /*Формирует катлог папок при входе в гланую папку*/
             DataGrid_Catalog.ItemsSource = null;
             infoCatalog = new ObservableCollection<InfoCatalog>();
             System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(Lebel_EnterCatalog.Content.ToString());
@@ -38,6 +37,7 @@ namespace GI.CS.MyFolderManagerFoto
         }
         private int ListCatalogCountFile(string NameCatalog)
         {
+           /*Считает количество файлов внутри папки*/
             int countFile = new System.IO.DirectoryInfo(Lebel_EnterCatalog.Content + "\\" + NameCatalog)
                 .GetFiles("*.*", System.IO.SearchOption.AllDirectories).Length;
             return countFile;
@@ -45,7 +45,7 @@ namespace GI.CS.MyFolderManagerFoto
 
         private void DataGrid_Catalog_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            /*Событие при двойном нажатии на таблицу*/
         }
 
         
