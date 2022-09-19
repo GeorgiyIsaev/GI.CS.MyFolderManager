@@ -48,7 +48,6 @@ namespace GI.CS.MyFolderManagerFoto
 
 
 
-      
 
 
 
@@ -60,7 +59,14 @@ namespace GI.CS.MyFolderManagerFoto
             /*Событие при двойном нажатии на таблицу*/
             string forever_papka = Lebel_EnterCatalog.Content + "\\" + ((InfoCatalog)DataGrid_Catalog.SelectedItem).NameCatalog;
             System.Diagnostics.Process.Start("explorer", forever_papka);
-           // GetListImage(forever_papka);
+            // GetListImage(forever_papka);
+
+
+            //  myWebBrowser.NavigateToString("<html><body><p>test page</p></body></html>");
+
+           var text =  GetHTML.Line(forever_papka);
+            myWebBrowser.NavigateToString(GetHTML.Line(forever_papka));
+        
         }
 
         
