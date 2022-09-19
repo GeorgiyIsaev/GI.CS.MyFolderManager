@@ -64,8 +64,8 @@ namespace GI.CS.MyFolderManagerFoto
 
             //  myWebBrowser.NavigateToString("<html><body><p>test page</p></body></html>");
 
-           var text =  GetHTML.Line(forever_papka);
-            myWebBrowser.NavigateToString(GetHTML.Line(forever_papka));
+           var text =  GetHTML.Table(forever_papka);
+            myWebBrowser.NavigateToString(GetHTML.Table(forever_papka));
         
         }
 
