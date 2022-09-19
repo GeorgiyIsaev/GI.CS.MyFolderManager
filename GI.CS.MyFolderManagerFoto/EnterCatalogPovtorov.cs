@@ -79,5 +79,43 @@ namespace GI.CS.MyFolderManagerFoto
             DataGrid_Catalog.ItemsSource = infoCatalogSearch;
             DataGrid_Catalog.Items.Refresh();
         }
+
+
+        private void DeleteSameResults()
+        {
+            /*Удаление одинаковых резульататов в пользу большего значения*/
+            DataGrid_CatalogMatch.ItemsSource = null;
+
+          
+
+            List<SearchForMatch> tempList = new List<SearchForMatch>(infoCatalogMatch);
+            List<SearchForMatch> tempList_new = new List<SearchForMatch>();
+
+            foreach (var item in tempList)
+            {
+                if(tempList_new.Count == 0)
+                {
+                    tempList_new.Add(item);
+                    continue;
+                }
+
+                //tempList[tempList.Count-1].ListFolderName == item
+
+
+
+
+                //SearchForMatch temp = new SearchForMatch(item);
+
+                //if (temp.CountItem <= inputCountWords) continue;
+                //if (temp.CountFind <= 1) continue;
+
+                //infoCatalogMatch.Add(new SearchForMatch(item));
+            }
+
+
+            ObservableCollection<SearchForMatch> tempInfoCatalogMatch = new ObservableCollection<SearchForMatch>(tempList_new);
+
+
+        }
     }
 }

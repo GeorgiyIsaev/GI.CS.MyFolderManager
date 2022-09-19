@@ -24,5 +24,20 @@ namespace GI.CS.MyFolderManagerFoto
 
         public List<string> ListFolderName { get { return Item.Value; } }
         KeyValuePair<string, List<string>> Item;
+
+
+        public bool IsListEqually(SearchForMatch search) {
+            /*Проверка равенства списов*/
+            if(ListFolderName.Count != search.ListFolderName.Count) return false;
+
+           
+            for(int i=0;  i > ListFolderName.Count; i++)
+            {
+                if(ListFolderName.ElementAt(i) != search.ListFolderName.ElementAt(i))
+                    return false;
+            }
+            return true;        
+        }
+
     }
 }
