@@ -30,7 +30,7 @@ namespace GI.CS.MyFolderManagerFoto
                 if (temp.CountFind <= 1) continue;
                 infoCatalogMatch.Add(new SearchForMatch(item));
             }
-
+            DeleteSameResults();
             DataGrid_CatalogMatch.ItemsSource = infoCatalogMatch;
             DataGrid_CatalogMatch.Items.Refresh();
         }
@@ -57,7 +57,7 @@ namespace GI.CS.MyFolderManagerFoto
 
                 infoCatalogMatch.Add(new SearchForMatch(item));
             }
-
+            DeleteSameResults();
             DataGrid_CatalogMatch.ItemsSource = infoCatalogMatch;
             DataGrid_CatalogMatch.Items.Refresh();
         }
@@ -99,22 +99,23 @@ namespace GI.CS.MyFolderManagerFoto
                     continue;
                 }
 
-                //tempList[tempList.Count-1].ListFolderName == item
 
+                if(item.IsListEqually(tempList_new[tempList_new.Count - 1])){
+                    if(item.NameCatalog.Length > tempList_new[tempList_new.Count - 1].NameCatalog.Length)
+                    {
+                        tempList_new.RemoveAt(tempList_new.Count - 1);
+                        tempList_new.Add(item);
+                    }
+                    continue;
+                }
 
-
-
-                //SearchForMatch temp = new SearchForMatch(item);
-
-                //if (temp.CountItem <= inputCountWords) continue;
-                //if (temp.CountFind <= 1) continue;
-
-                //infoCatalogMatch.Add(new SearchForMatch(item));
+                tempList_new.Add(item);                
             }
 
 
-            ObservableCollection<SearchForMatch> tempInfoCatalogMatch = new ObservableCollection<SearchForMatch>(tempList_new);
-
+            infoCatalogMatch = new ObservableCollection<SearchForMatch>(tempList_new);
+            DataGrid_CatalogMatch.ItemsSource = infoCatalogMatch;
+            DataGrid_CatalogMatch.Items.Refresh();
 
         }
     }
