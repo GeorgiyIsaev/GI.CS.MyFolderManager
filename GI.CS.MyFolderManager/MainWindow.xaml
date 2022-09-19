@@ -39,21 +39,22 @@
         </DataGrid>
         <Button Name="Button_DeleteMinCount" Content="Исключить" Click="Button_DeleteMinCount_Click" HorizontalAlignment="Left" Height="22" Margin="414,6,0,0" VerticalAlignment="Top" Width="163"/>
         <TextBox Name="TextBox_DeleteMinCount"  HorizontalAlignment="Left" Height="23" Margin="593,5,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"/>
-        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Margin="10,415,292,0" Width="840" >
-            <Grid  Name="Image_Board" Width="800">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="10,415,10,0" >
+            <Grid  Name="Image_Board" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>                
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width=".2*"/>
-                    <ColumnDefinition Width=".2*"/>
-                    <ColumnDefinition Width=".2*"/>
-                    <ColumnDefinition Width=".2*"/>
-                    <ColumnDefinition Width=".2*"/>
+                    <ColumnDefinition Name="col1" Width=".2*"/>
+                    <ColumnDefinition Name="col2" Width=".2*"/>
+                    <ColumnDefinition Name="col3" Width=".2*"/>
+                    <ColumnDefinition Name="col4" Width=".2*"/>
+                    <ColumnDefinition Name="col5" Width=".2*"/>
                 </Grid.ColumnDefinitions>
             </Grid>
-        </ScrollViewer>        
+        </ScrollViewer>
+        <Button Name="testTable" Content="testTable" Click="testTable_Click" HorizontalAlignment="Left" Margin="775,376,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Window>

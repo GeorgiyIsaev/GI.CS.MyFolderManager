@@ -177,7 +177,7 @@ namespace GI.CS.MyFolderManager
                  
                     AddImage2(s, column++, row);
                 }
-                MessageBox.Show("" + text);
+                //MessageBox.Show("" + text);
             }
         }
 
@@ -190,6 +190,8 @@ namespace GI.CS.MyFolderManager
 
             Uri uri = new Uri(nameImage);
             img.Source = new System.Windows.Media.Imaging.BitmapImage(uri);
+
+           
 
             Image_Board.Children.Add(img);
 
@@ -231,16 +233,29 @@ namespace GI.CS.MyFolderManager
 
         }
 
-            //    Image finalImage = new Image();
-            //    finalImage.Width = 80;
+        private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            // Image_Board.Children.Clear();
+            //col1.Is = false;
 
-            //    BitmapImage logo = new BitmapImage();
-            //    logo.BeginInit();
-            //    logo.UriSource = new Uri(nameImage);
-            //    logo.EndInit();
+           // Image_Board.Remove(col1);
+        }
 
-            //    finalImage.Source = logo;
-            //}
+        private void testTable_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        //    Image finalImage = new Image();
+        //    finalImage.Width = 80;
+
+        //    BitmapImage logo = new BitmapImage();
+        //    logo.BeginInit();
+        //    logo.UriSource = new Uri(nameImage);
+        //    logo.EndInit();
+
+        //    finalImage.Source = logo;
+        //}
 
         //    private void DataGrid_CatalogMatch_Selected(object sender, RoutedEventArgs e)
         //{
@@ -258,7 +273,7 @@ namespace GI.CS.MyFolderManager
 
 
 
-        
+
 
         //   // AddImage(string nameImage);
         //}
