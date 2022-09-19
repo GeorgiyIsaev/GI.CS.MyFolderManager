@@ -8,18 +8,41 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="300" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />   
         </Grid.ColumnDefinitions>
 
+        <Grid Grid.Column="0">
+            <!--Грид для поиска повторов-->
+        </Grid>
+        <GridSplitter Grid.Column="1" ShowsPreview="False" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
 
-        <GridSplitter Grid.Column="1" ShowsPreview="False" Width="3"
-        HorizontalAlignment="Center" VerticalAlignment="Stretch" />
-        <GridSplitter Grid.Column="3" ShowsPreview="False" Width="3"
-        HorizontalAlignment="Center" VerticalAlignment="Stretch" />
+        <Grid Grid.Column="2">
+            <!--Грид для отображения каталогов-->
+            <Button Name="Button_EnterCatalog" Content="Выбрать папку" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="121" Click="Button_EnterCatalog_Click"/>
+            <Label Name="Lebel_EnterCatalog" Content="" Margin="136,6,10,0" VerticalAlignment="Top"/>
 
+            <DataGrid MouseDoubleClick="DataGrid_Catalog_MouseDoubleClick" CanUserAddRows="false" AutoGenerateColumns="False" Name="DataGrid_Catalog" Margin="10,37,10,10">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Название" IsReadOnly="True"   Binding="{Binding Path=NameCatalog}" Width="205"  MaxWidth="350" MinWidth="100">
+                        <DataGridTextColumn.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <Setter Property="ToolTip" Value="{Binding Path=NameCatalog}" />
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Файлов" IsReadOnly="True" Binding="{Binding Path=CountFile}" Width="70"  MaxWidth="300" MinWidth="50" >
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <GridSplitter Grid.Column="3" ShowsPreview="False" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
+
+        <Grid Grid.Column="3">
+            <!--Грид для просмотра картинок-->
+        </Grid>
     </Grid>
 </Window>
