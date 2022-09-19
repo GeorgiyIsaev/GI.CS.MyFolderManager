@@ -30,7 +30,7 @@ namespace GI.CS.MyFolderManager
         }
 
         private void Window_ManagementProfile_Loaded(object sender, RoutedEventArgs e)
-        {            
+        {
         }
 
         ObservableCollection<InfoCatalog> infoCatalog = new ObservableCollection<InfoCatalog>();
@@ -49,14 +49,14 @@ namespace GI.CS.MyFolderManager
             }
         }
 
-        private void ListCatalog(){
-        
-            DataGrid_Catalog.ItemsSource = null; 
+        private void ListCatalog() {
+
+            DataGrid_Catalog.ItemsSource = null;
             infoCatalog = new ObservableCollection<InfoCatalog>();
             System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(Lebel_EnterCatalog.Content.ToString());
             foreach (var item in dir.GetDirectories())
-            {            
-                infoCatalog.Add(new InfoCatalog { NameCatalog = item.Name, CountFile= ListCatalogCountFile(item.Name)});    
+            {
+                infoCatalog.Add(new InfoCatalog { NameCatalog = item.Name, CountFile = ListCatalogCountFile(item.Name) });
             }
             DataGrid_Catalog.ItemsSource = infoCatalog;
             DataGrid_Catalog.Items.Refresh();
@@ -65,10 +65,10 @@ namespace GI.CS.MyFolderManager
         }
 
 
-      
+
         private void ListCatalogMatch()
-        {         
-            DataGrid_CatalogMatch.ItemsSource = null;          
+        {
+            DataGrid_CatalogMatch.ItemsSource = null;
             ParserDictionary.CreateNewFindMatcheCatalog(infoCatalog); //создадим словарь на основе содержимого каталога
 
             infoCatalogMatch = new ObservableCollection<SearchForMatch>();
@@ -87,14 +87,14 @@ namespace GI.CS.MyFolderManager
         private int ListCatalogCountFile(string NameCatalog)
         {
             int countFile = new System.IO.DirectoryInfo(Lebel_EnterCatalog.Content + "\\" + NameCatalog)
-                .GetFiles("*.*", System.IO.SearchOption.AllDirectories).Length;                 
+                .GetFiles("*.*", System.IO.SearchOption.AllDirectories).Length;
             return countFile;
         }
 
         private void DataGrid_Catalog_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        { 
-       
-            try{              
+        {
+
+            try {
                 string forever_papka = Lebel_EnterCatalog.Content + "\\" + ((InfoCatalog)DataGrid_Catalog.SelectedItem).NameCatalog;
                 System.Diagnostics.Process.Start("explorer", forever_papka);
 
@@ -111,7 +111,7 @@ namespace GI.CS.MyFolderManager
 
             DataGrid_Catalog.ItemsSource = null;
             infoCatalogSearch = new ObservableCollection<InfoCatalog>();
-                        
+
             SearchForMatch temp = (SearchForMatch)DataGrid_CatalogMatch.SelectedItem;
 
             foreach (var item in temp.ListFolderName)
@@ -150,18 +150,41 @@ namespace GI.CS.MyFolderManager
 
         /*Тест картинок*/
 
-        private void setCellImage(Grid g, Image img, int column, int row)
+   
+
+
+        private void AddImage(string nameImage)
         {
-
-            Grid.SetColumn(img, column);
-            Grid.SetRow(img, row);
-
-            if (!g.Children.Contains(img))
-                g.Children.Add(img);
-
-            g.UpdateLayout();
+            Image finalImage = new Image();
+            finalImage.Width = 80;
+           
+            BitmapImage logo = new BitmapImage();
+            logo.BeginInit();
+            logo.UriSource = new Uri(nameImage);
+            logo.EndInit();
+          
+            finalImage.Source = logo;
         }
 
+     //   private void setCellImage(Grid g, Image img, int column, int row)
+     //   {
+
+     //       Grid.SetColumn(img, column);
+     //       Grid.SetRow(img, row);
+
+     //       if (!g.Children.Contains(img))
+     //           g.Children.Add(img);
+
+     //       g.UpdateLayout();
+     //   }
+     //private void GridIm(string nameCatalog)
+     //   {
+           
+            
+     //       for (int i = 0; i < 15; i++)
+     //           for (int j = 0; j < 15; j++)
+     //               setCellImage(Image_Board, "", i, j);
+     //   }
 
     }
 }
