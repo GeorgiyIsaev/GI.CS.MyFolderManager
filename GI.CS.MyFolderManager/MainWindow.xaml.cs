@@ -182,21 +182,43 @@ namespace GI.CS.MyFolderManager
         }
 
         private void AddImage2(string nameImage, int column, int row)
-        {
-            Image img = new Image();
-
+        {          
+            
+            Image img = new Image();  
+            img.Margin = new Thickness(5, 5, 5, 5);
             Grid.SetColumn(img, column);
             Grid.SetRow(img, row);
 
+            Uri uri2 = new Uri(@"C:\nofoto.jpg"); //заменить на путь к католгу exe
             Uri uri = new Uri(nameImage);
+           
 
-            img.Source = new System.Windows.Media.Imaging.BitmapImage(uri);
-            img.Margin = new Thickness(5, 5, 5, 5);
+            try
+            {
+                img.Source = new System.Windows.Media.Imaging.BitmapImage(uri);
+            }
+            catch (Exception){
+
+           
+                img.Source = new System.Windows.Media.Imaging.BitmapImage(uri2); 
+            }
 
         
 
 
             Image_Board.Children.Add(img);
+        }
+
+        private void IsImage(string nameImage)
+        {
+            try
+            {
+
+            }
+            catch
+            {
+
+            }
 
         }
 
@@ -237,17 +259,15 @@ namespace GI.CS.MyFolderManager
 
         }
 
-        private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            // Image_Board.Children.Clear();
-            //col1.Is = false;
-
-           // Image_Board.Remove(col1);
-        }
+     
 
         private void testTable_Click(object sender, RoutedEventArgs e)
         {
+            Image_Board.Visibility = Visibility.Collapsed;
+            //Image_Board.Children.Clear();
+            //col1.IsEnabled = false;
 
+            // Image_Board.Remove(col1);
         }
 
         //    Image finalImage = new Image();
