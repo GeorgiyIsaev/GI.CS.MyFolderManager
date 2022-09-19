@@ -29,7 +29,7 @@
 
             <DataGrid MouseDoubleClick="DataGrid_Catalog_MouseDoubleClick" CanUserAddRows="false" AutoGenerateColumns="False" Name="DataGrid_Catalog" Margin="10,37,10,10">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Название" IsReadOnly="True"   Binding="{Binding Path=NameCatalog}" Width="205"  MaxWidth="350" MinWidth="100">
+                    <DataGridTextColumn Header="Название" IsReadOnly="True"   Binding="{Binding Path=NameCatalog}" Width="auto" MinWidth="100">
                         <DataGridTextColumn.CellStyle>
                             <Style TargetType="DataGridCell">
                                 <Setter Property="ToolTip" Value="{Binding Path=NameCatalog}" />
