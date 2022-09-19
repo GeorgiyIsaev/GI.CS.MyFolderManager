@@ -146,5 +146,22 @@ namespace GI.CS.MyFolderManager
             DataGrid_CatalogMatch.ItemsSource = infoCatalogMatch;
             DataGrid_CatalogMatch.Items.Refresh();
         }
+
+
+        /*Тест картинок*/
+
+        private void setCellImage(Grid g, Image img, int column, int row)
+        {
+
+            Grid.SetColumn(img, column);
+            Grid.SetRow(img, row);
+
+            if (!g.Children.Contains(img))
+                g.Children.Add(img);
+
+            g.UpdateLayout();
+        }
+
+
     }
 }
