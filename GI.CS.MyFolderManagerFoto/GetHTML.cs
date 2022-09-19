@@ -28,39 +28,27 @@ namespace GI.CS.MyFolderManagerFoto
             return text;
         }
 
-        public static string Table(string nameCatalog)
+        public static string Table(string nameCatalog, string width)
         {
             List<string> nameFiles = new List<string>(System.IO.Directory.GetFiles(nameCatalog)); //список картинок
 
             string text = @"<!DOCTYPE html ><html><meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>";
-            text += "<div \"width =\"100%\">";
 
-            text += "<table \"width =\"100%\">";
+            text += "<style>" +
+                ".container .card_item{width: "+ width + "; border:1px solid gray; }" +
+                ".container{display:flex;flex-direction:row;flex-wrap:wrap;}" +
+                " .card_item{   padding: 15px 15px 15px 15px;}" +
+                "  </style>";
 
-            int count = 0;
+            text += "<div class=\"container\">";
+            //background:#d3d3d3;
             foreach (var nameFile in nameFiles)
             {
-                if (count == 0)
-                {
-                    text += "<tr>";
-                }
-
-                text += "<td>";
-                text += "<img src=\"";
+                text += "<img class=\"card_item\" src=\"";
                 text += "file://" + nameFile;
                 text += "\"width =\"100%\" title=\"" + nameFile + "\" border=\"0\" alt=\"" + nameFile + "\">";
-                text += "</td>";
-
-                if (count == 5)
-                {
-                    count = 0;
-                    text += "</tr>";
-                }
-                count++;
             }
-            if (count !=0) text += "</tr>";
 
-            text += " </table>";
             text += "</div>";
             return text;
         }

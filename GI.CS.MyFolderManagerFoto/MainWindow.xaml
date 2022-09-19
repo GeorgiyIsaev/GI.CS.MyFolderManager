@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GI.CS.MyFolderManagerFoto"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow" Height="450" Width="1100"
         >
     <Grid>
         <Grid.ColumnDefinitions>
@@ -60,8 +60,10 @@
 
         <Grid Grid.Column="4">
             <!--Грид для просмотра картинок-->
+            <Button x:Name="Button_SizeWeb" Content="Увеличить" Margin="0,4,674,0" VerticalAlignment="Top" Click="Button_SizeWeb_Click" HorizontalAlignment="Right" Width="102"/>
+          
             <WebBrowser Name="myWebBrowser" Margin="10,31,10,17" RenderTransformOrigin="0.297,0.473"/>
-        </Grid>
+          </Grid>
 
     </Grid>
 </Window>
