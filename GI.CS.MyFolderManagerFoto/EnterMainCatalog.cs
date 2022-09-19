@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
 
@@ -15,11 +16,12 @@ namespace GI.CS.MyFolderManagerFoto
             {
                 Lebel_EnterCatalog.Content = dialog.SelectedPath;
                 ListCatalog();
-               // ListCatalogMatch();
+                ListCatalogMatch();
             }
         }
 
         ObservableCollection<InfoCatalog> infoCatalog = new ObservableCollection<InfoCatalog>(); //Каталог папок внтри папки
+     
         private void ListCatalog()
         {
             /*Формирует катлог папок при входе в гланую папку*/
@@ -43,9 +45,22 @@ namespace GI.CS.MyFolderManagerFoto
             return countFile;
         }
 
+
+
+
+      
+
+
+
+
+
+
         private void DataGrid_Catalog_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             /*Событие при двойном нажатии на таблицу*/
+            string forever_papka = Lebel_EnterCatalog.Content + "\\" + ((InfoCatalog)DataGrid_Catalog.SelectedItem).NameCatalog;
+            System.Diagnostics.Process.Start("explorer", forever_papka);
+           // GetListImage(forever_papka);
         }
 
         

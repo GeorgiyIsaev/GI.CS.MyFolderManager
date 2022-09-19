@@ -61,6 +61,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ParserDictionary.cs" />
+    <Compile Include="SearchForMatch.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -69,6 +71,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="EnterCatalogPovtorov.cs" />
     <Compile Include="EnterMainCatalog.cs" />
     <Compile Include="InfoCatalog.cs" />
     <Compile Include="MainWindow.xaml.cs">
