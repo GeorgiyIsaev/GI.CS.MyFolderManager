@@ -197,30 +197,21 @@ namespace GI.CS.MyFolderManager
             {
                 img.Source = new System.Windows.Media.Imaging.BitmapImage(uri);
             }
-            catch (Exception){
-
-           
+            catch (Exception){                           
                 img.Source = new System.Windows.Media.Imaging.BitmapImage(uri2); 
             }
 
+
+
         
-
-
             Image_Board.Children.Add(img);
+
+            //Grid.SetColumn(img, 0);
+            //Grid.SetRow(img, row+ column);
+            Image_Board_NotColumn.Children.Add(img);
         }
 
-        private void IsImage(string nameImage)
-        {
-            try
-            {
-
-            }
-            catch
-            {
-
-            }
-
-        }
+    
 
 
         private void AddImage(string nameImage)
@@ -263,9 +254,27 @@ namespace GI.CS.MyFolderManager
 
         private void testTable_Click(object sender, RoutedEventArgs e)
         {
-            Image_Board.Visibility = Visibility.Collapsed;
+           
+
+
+
+
+
+            if (Image_Board.Visibility != Visibility.Collapsed)
+            {
+                Image_Board.Visibility = Visibility.Collapsed;
+                Image_Board_NotColumn.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                Image_Board.Visibility = Visibility.Visible;
+                Image_Board_NotColumn.Visibility = Visibility.Collapsed;
+            }
+            
+            
+            //Image_Board.Visibility = Visibility.Collapsed;
             //Image_Board.Children.Clear();
-            //col1.IsEnabled = false;
+           // col1 = false;
 
             // Image_Board.Remove(col1);
         }
