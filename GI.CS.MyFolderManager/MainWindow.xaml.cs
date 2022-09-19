@@ -93,11 +93,12 @@ namespace GI.CS.MyFolderManager
 
         private void DataGrid_Catalog_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            /*Событие выбора папки двойным щелчком*/
 
             try {
                 string forever_papka = Lebel_EnterCatalog.Content + "\\" + ((InfoCatalog)DataGrid_Catalog.SelectedItem).NameCatalog;
                 System.Diagnostics.Process.Start("explorer", forever_papka);
-
+                GetListImage(forever_papka);
             }
             catch (Exception ex)
             {
@@ -149,42 +150,110 @@ namespace GI.CS.MyFolderManager
 
 
         /*Тест картинок*/
+        private void GetListImage(string nameCatalog)
+        {    /*Показывает список файлов*/
+            // если папка существует
+            if (System.IO.Directory.Exists(nameCatalog))
+            {
+                string text = "";     
+                string[] files = System.IO.Directory.GetFiles(nameCatalog);
+                foreach (string s in files)
+                {
+                    text += s + "\n";              
+                }
+                MessageBox.Show("" + text);
+            }
+        }
 
-   
+
 
 
         private void AddImage(string nameImage)
-        {
-            Image finalImage = new Image();
-            finalImage.Width = 80;
-           
-            BitmapImage logo = new BitmapImage();
-            logo.BeginInit();
-            logo.UriSource = new Uri(nameImage);
-            logo.EndInit();
-          
-            finalImage.Source = logo;
+        { 
         }
+            /*Создадим картинку*/
+  //          Image img = new Image();
+  //          Uri uri = new Uri(@"C:\d1.jpg");
+  //          img.Source = new System.Windows.Media.Imaging.BitmapImage(uri);
 
-     //   private void setCellImage(Grid g, Image img, int column, int row)
-     //   {
-
-     //       Grid.SetColumn(img, column);
-     //       Grid.SetRow(img, row);
-
-     //       if (!g.Children.Contains(img))
-     //           g.Children.Add(img);
-
-     //       g.UpdateLayout();
-     //   }
-     //private void GridIm(string nameCatalog)
-     //   {
+  //          DataGrid dg = new DataGrid();
+  //          grid1.Children.Add(dg);
            
-            
-     //       for (int i = 0; i < 15; i++)
-     //           for (int j = 0; j < 15; j++)
-     //               setCellImage(Image_Board, "", i, j);
-     //   }
+
+
+  //DataTable dt = new DataTable();
+
+  //          dt.Columns.Add("Column1");
+  //          dt.Columns.Add("Column2");
+  //          dt.Columns.Add("Column3");
+  //          dt.Columns.Add("Column4", typeof(Image)); // type of image!
+
+  //          DataRow dr = dt.NewRow();
+  //          dr[0] = "aaa";
+  //          dr[1] = "bbb";
+  //          dr[2] = "ccc";
+  //          dr[3] = img; // add a sample image
+
+  //          dt.Rows.Add(dr);
+
+
+  //          dg.ItemsSource = dt.DefaultView;
+
+
+
+
+            //    Image finalImage = new Image();
+            //    finalImage.Width = 80;
+
+            //    BitmapImage logo = new BitmapImage();
+            //    logo.BeginInit();
+            //    logo.UriSource = new Uri(nameImage);
+            //    logo.EndInit();
+
+            //    finalImage.Source = logo;
+            //}
+
+        //    private void DataGrid_CatalogMatch_Selected(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        string forever_papka = Lebel_EnterCatalog.Content + "\\" + ((InfoCatalog)DataGrid_Catalog.SelectedItem).NameCatalog;
+        //       // System.Diagnostics.Process.Start("explorer", forever_papka);
+        //        MessageBox.Show("" + forever_papka);
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        System.Diagnostics.Process.Start("explorer", Lebel_EnterCatalog.Content.ToString());
+        //    }
+
+
+
+        
+
+        //   // AddImage(string nameImage);
+        //}
+
+        //   private void setCellImage(Grid g, Image img, int column, int row)
+        //   {
+
+        //       Grid.SetColumn(img, column);
+        //       Grid.SetRow(img, row);
+
+        //       if (!g.Children.Contains(img))
+        //           g.Children.Add(img);
+
+        //       g.UpdateLayout();
+        //   }
+        //private void GridIm(string nameCatalog)
+        //   {
+
+
+        //       for (int i = 0; i < 15; i++)
+        //           for (int j = 0; j < 15; j++)
+        //               setCellImage(Image_Board, "", i, j);
+        //   }
 
     }
 }
+
