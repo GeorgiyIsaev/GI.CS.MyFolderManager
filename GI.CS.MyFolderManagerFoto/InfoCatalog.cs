@@ -27,24 +27,30 @@ namespace GI.CS.MyFolderManagerFoto
                 .GetFiles("*.*", System.IO.SearchOption.AllDirectories).Length;
             return countFile;
         }
-
-
-
-
-        public List<String> SplitName()
+        public List<string> SplitName()
         {
-            List<String> nameItem = new List<String>(NameCatalog.Split(' ', '-', '_'));
+            List<string> nameItem = new List<string>(NameCatalog.Split(' ', '-', '_'));
             nameItem.RemoveAll(EndsWithSaurus); //Удалить пустые строчки
             return nameItem;
         }
-
-
-
-
-
-        private static bool EndsWithSaurus(String s)
+        private static bool EndsWithSaurus(string s)
         {
             return s.Length < 1;
         }
+
+
+        private void GetTags()
+        {
+
+            List<string> nameItem = new List<string>(NameCatalog.Split('.'));
+            
+            if(nameItem.Count >1)
+                nameItem.RemoveAt(nameItem.Count-1);
+
+            tags = new List<string>(nameItem);
+
+
+        }
+
     }
 }
