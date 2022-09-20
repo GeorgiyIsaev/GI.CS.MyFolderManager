@@ -80,8 +80,12 @@ namespace GI.CS.MyFolderManagerFoto
             if (icurrentInfoCatalogGlob == null) return;       
             if (TextBox_NameCatalog.Text == "") return;
             string newName = Lebel_EnterCatalog.Content + "\\" + TextBox_NameCatalog.Text;
-
-            System.IO.Directory.Move(icurrentInfoCatalogGlob.FullNameCatalog, newName); //переименовали
+            try
+            {
+                System.IO.Directory.Move(icurrentInfoCatalogGlob.FullNameCatalog, newName); //переименовали
+            }
+            catch (Exception) { MessageBox.Show("Недопустимое имя!/тВозможно это имя уже занято!"); }
+            RefreshCatalog();
         }
 
    

@@ -15,15 +15,18 @@ namespace GI.CS.MyFolderManagerFoto
             if (dialog.ShowDialog(this).GetValueOrDefault())
             {
                 Lebel_EnterCatalog.Content = dialog.SelectedPath;
-                ListCatalog();
-                ListCatalogMatch();
-                FormTagsLis();
+                RefreshCatalog();
             }
 
         }
         private void Refresh_Click(object sender, RoutedEventArgs e)
         {
             //Lebel_EnterCatalog.Content = dialog.SelectedPath;
+            RefreshCatalog();
+        }
+
+        private void RefreshCatalog()
+        {
             TextBox_Tags.Children.Clear();
             ListCatalog();
             ListCatalogMatch();

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace GI.CS.MyFolderManagerFoto
 {
@@ -50,11 +52,27 @@ namespace GI.CS.MyFolderManagerFoto
                 Button btn = new Button();
                 btn.Content = " " + val.Key + " (" + val.Value.Count + ")"; 
                 btn.Tag = val;
-
+                btn.FontSize = 14;
+           
                 var d = btn.Tag;
+
+                if(val.Value.Count > 100)
+                {
+                    btn.Background = new SolidColorBrush(Colors.Red);
+                }
+                else if (val.Value.Count > 50)
+                {
+                    btn.Background = new SolidColorBrush(Colors.Orange);
+                }
+                else if (val.Value.Count > 10)
+                {
+                    btn.Background = new SolidColorBrush(Colors.Yellow);
+                }
+                else if (val.Value.Count > 5)
+                {
+                    btn.Background = new SolidColorBrush(Colors.Green);
+                }
                 btn.Click += Button_EnterTag;
-
-
                 TextBox_Tags.Children.Add(btn);    
 
                 //добавить действие с заполнением таблицы
