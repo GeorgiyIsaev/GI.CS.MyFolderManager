@@ -29,21 +29,28 @@ namespace GI.CS.MyFolderManagerFoto
         bool isWebSize = true;
         private void Button_SizeWeb_Click(object sender, RoutedEventArgs e)
         {
+           
+            isWebSize = isWebSize ?  false : true;
+            IsSizeWeb();        
+        }
+
+        private void IsSizeWeb()
+        {
             if (currentPapka.Length < 1) return;
 
-            if (isWebSize)
-            {
-                isWebSize = true;
+            if (!isWebSize)
+            {         
                 Button_SizeWeb.Content = "Уменьшить";
                 myWebBrowser.NavigateToString(GetHTML.Table(currentPapka, "95%"));
-      
+
             }
-            else
-            {
+            else{
+            
                 Button_SizeWeb.Content = "Увеличить";
-                myWebBrowser.NavigateToString(GetHTML.Table(currentPapka, "200px"));
-                isWebSize = false;
+                myWebBrowser.NavigateToString(GetHTML.Table(currentPapka, "200px"));              
             }
         }
+
+
     }
 }

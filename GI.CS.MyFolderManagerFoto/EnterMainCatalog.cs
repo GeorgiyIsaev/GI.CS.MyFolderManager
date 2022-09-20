@@ -57,16 +57,10 @@ namespace GI.CS.MyFolderManagerFoto
         private void DataGrid_Catalog_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             /*Событие при двойном нажатии на таблицу*/
-            string forever_papka = Lebel_EnterCatalog.Content + "\\" + ((InfoCatalog)DataGrid_Catalog.SelectedItem).NameCatalog;
-           // System.Diagnostics.Process.Start("explorer", forever_papka);
-            // GetListImage(forever_papka);
-
-
-            //  myWebBrowser.NavigateToString("<html><body><p>test page</p></body></html>");
-
-           //var text =  GetHTML.Table(forever_papka);
-            myWebBrowser.NavigateToString(GetHTML.Table(forever_papka, "200px" ));
-            currentPapka = forever_papka;
+            string forever_papka = Lebel_EnterCatalog.Content + "\\" + ((InfoCatalog)DataGrid_Catalog.SelectedItem).NameCatalog;          
+                    
+            currentPapka = forever_papka; 
+            IsSizeWeb(); //открывает страницу
         }
 
         
