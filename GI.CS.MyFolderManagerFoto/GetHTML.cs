@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace GI.CS.MyFolderManagerFoto
 {
@@ -12,12 +13,8 @@ namespace GI.CS.MyFolderManagerFoto
         public static string Line(string nameCatalog)
         {
             List<string> nameFiles = new List<string>(System.IO.Directory.GetFiles(nameCatalog)); //список картинок
-
             string text = @"<!DOCTYPE html ><html><meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>";
-            text += "<div>";
-        
-
-
+            text += "<div>";     
             foreach (var nameFile in nameFiles)
             {
                 text += "<img src=\"";
@@ -31,6 +28,40 @@ namespace GI.CS.MyFolderManagerFoto
         public static string Table(string nameCatalog, string width)
         {
             List<string> nameFiles = new List<string>(System.IO.Directory.GetFiles(nameCatalog)); //список картинок
+
+
+            nameFiles.Sort(delegate (string x, string y)
+            {
+                string temp1 = x.Replace(nameCatalog, "");
+                string temp2 = y.Replace(nameCatalog, ""); 
+                temp1 = temp1.Replace("\\", "");
+                temp2 = temp2.Replace("\\", "");
+                temp1 = temp1.Replace(".jpg", "");
+                temp2 = temp2.Replace(".jpg", "");
+                temp1 = temp1.Replace(".png", "");
+                temp2 = temp2.Replace(".png", "");
+                //string text = Console.ReadLine();
+
+                int number1; int number2;
+                if (int.TryParse(temp1, out number1) && int.TryParse(temp2, out number2))
+                {
+                   // MessageBox.Show(temp1 + " - " + temp2 + " == " + (number1 - number2));
+                    return number1 - number2;
+                   
+                }
+                else if (int.TryParse(temp1, out number1) || int.TryParse(temp2, out number2))
+                {
+                    //MessageBox.Show(temp1 + " - " + temp2 + " == " + x.CompareTo(y));
+                    return x.CompareTo(y);
+                }
+                else {
+                   // MessageBox.Show(temp1 + " - " + temp2 + " == " + x.CompareTo(y));
+                    return x.CompareTo(y); 
+                }
+
+            });
+
+
 
             string text = @"<!DOCTYPE html ><html><meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>";
 
