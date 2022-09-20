@@ -37,9 +37,13 @@ namespace GI.CS.MyFolderManagerFoto
             text += "<style>" +
                 ".container .card_item{width: "+ width + "; border:1px solid gray; }" +
                 ".container{display:flex;flex-direction:row;flex-wrap:wrap;}" +
-                " .card_item{   padding: 15px 15px 15px 15px;}" +
-                "  </style>";
+                ".card_item{   padding: 15px 15px 15px 15px;}" +
+                "</style>";
 
+
+
+
+            text += "<h2>" + "</h2>";
             text += "<div class=\"container\">";
             //background:#d3d3d3;
             foreach (var nameFile in nameFiles)

@@ -53,13 +53,15 @@ namespace GI.CS.MyFolderManagerFoto
 
 
 
-        string currentPapka = "";
+        string currentFullNameCatalog = "";
+
         private void DataGrid_Catalog_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             /*Событие при двойном нажатии на таблицу*/
-            string forever_papka = Lebel_EnterCatalog.Content + "\\" + ((InfoCatalog)DataGrid_Catalog.SelectedItem).NameCatalog;          
-                    
-            currentPapka = forever_papka; 
+            string forever_papka = Lebel_EnterCatalog.Content + "\\" + ((InfoCatalog)DataGrid_Catalog.SelectedItem).NameCatalog;
+
+         
+            currentFullNameCatalog = forever_papka; 
             IsSizeWeb(); //открывает страницу
         }
 

@@ -36,18 +36,18 @@ namespace GI.CS.MyFolderManagerFoto
 
         private void IsSizeWeb()
         {
-            if (currentPapka.Length < 1) return;
+            if (currentFullNameCatalog.Length < 1) return;
 
             if (!isWebSize)
             {         
-                Button_SizeWeb.Content = "Уменьшить";
-                myWebBrowser.NavigateToString(GetHTML.Table(currentPapka, "95%"));
+                Button_SizeWeb.Content = "Таблица";
+                myWebBrowser.NavigateToString(GetHTML.Table(currentFullNameCatalog, "95%"));
 
             }
             else{
             
-                Button_SizeWeb.Content = "Увеличить";
-                myWebBrowser.NavigateToString(GetHTML.Table(currentPapka, "200px"));              
+                Button_SizeWeb.Content = "На всю страницу";
+                myWebBrowser.NavigateToString(GetHTML.Table(currentFullNameCatalog, "200px"));              
             }
         }
 
