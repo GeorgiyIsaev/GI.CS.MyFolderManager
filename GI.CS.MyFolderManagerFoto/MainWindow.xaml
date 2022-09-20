@@ -9,7 +9,7 @@
         >
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Name="Column_0" Width="0" />
+            <ColumnDefinition Name="Column_0" Width="520" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="300" />
             <ColumnDefinition Width="Auto" />
@@ -18,8 +18,9 @@
 
         <Grid Grid.Column="0">
             <!--Грид для поиска повторов-->
-            <Button Name="Button_DeleteMinCount" Content="Слов больше" Click="Button_DeleteMinCount_Click" Margin="10,10,0,0" HorizontalAlignment="Left" Width="151" Height="25" VerticalAlignment="Top"/>
-            <TextBox Name="TextBox_DeleteMinCount"  HorizontalAlignment="Left" TextWrapping="Wrap" Text="0" Margin="178,10,0,0" Width="189" Height="22" VerticalAlignment="Top"/>
+            <TextBlock Name="TB_CountM" HorizontalAlignment="Left" Margin="10,13,0,0" TextWrapping="Wrap" Text="Всего: 0" VerticalAlignment="Top" Height="19" Width="59"/>
+            <Button Name="Button_DeleteMinCount" Content="Слов больше" Click="Button_DeleteMinCount_Click" Margin="69,10,0,0" HorizontalAlignment="Left" Width="151" Height="25" VerticalAlignment="Top"/>
+            <TextBox Name="TextBox_DeleteMinCount"  HorizontalAlignment="Left" TextWrapping="Wrap" Text="1" Margin="225,11,0,0" Width="189" Height="22" VerticalAlignment="Top"/>
             <DataGrid MouseDoubleClick="DataGrid_CatalogMatch_MouseDoubleClick" AutoGenerateColumns="False" x:Name="DataGrid_CatalogMatch" Margin="10,40,10,10">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Название" IsReadOnly="True"   Binding="{Binding NameCatalog}" Width="200"  MaxWidth="350" MinWidth="100">
@@ -33,6 +34,7 @@
                     <DataGridTextColumn Header="Папок" IsReadOnly="True" Binding="{Binding CountFind}"   MaxWidth="50" MinWidth="30" />
                 </DataGrid.Columns>
             </DataGrid>
+          
         </Grid>
         <GridSplitter Grid.Column="1" ShowsPreview="False" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
 

@@ -27,12 +27,15 @@ namespace GI.CS.MyFolderManagerFoto
             foreach (KeyValuePair<string, List<string>> item in ParserDictionary.catalogsKey)
             {
                 SearchForMatch temp = new SearchForMatch(item);
+                if (temp.CountItem <= 1) continue;
                 if (temp.CountFind <= 1) continue;
                 infoCatalogMatch.Add(new SearchForMatch(item));
             }
             DeleteSameResults();
             DataGrid_CatalogMatch.ItemsSource = infoCatalogMatch;
             DataGrid_CatalogMatch.Items.Refresh();
+            TB_CountM.Text = "Всего: " + infoCatalogMatch.Count;
+         
         }
 
 
@@ -60,6 +63,7 @@ namespace GI.CS.MyFolderManagerFoto
             DeleteSameResults();
             DataGrid_CatalogMatch.ItemsSource = infoCatalogMatch;
             DataGrid_CatalogMatch.Items.Refresh();
+            TB_CountM.Text = "Всего: " + infoCatalogMatch.Count;
         }
 
 
@@ -105,7 +109,7 @@ namespace GI.CS.MyFolderManagerFoto
                     {
                         tempList_new.RemoveAt(tempList_new.Count - 1);
                         tempList_new.Add(item);
-                    }
+                    }                 
                     continue;
                 }
 
