@@ -74,7 +74,7 @@ namespace GI.CS.MyFolderManagerFoto
                 }
                 else if (val.Value.Count >= 5)
                 {
-                    btn.Background = new SolidColorBrush(Colors.Green);
+                    btn.Background = new SolidColorBrush(Colors.LightGreen);
                 }
                 btn.Click += Button_EnterTag;
                 TextBox_Tags.Children.Add(btn);    
