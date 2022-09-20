@@ -38,12 +38,13 @@ namespace GI.CS.MyFolderManagerFoto
                 ".container .card_item{width: "+ width + "; border:1px solid gray; }" +
                 ".container{display:flex;flex-direction:row;flex-wrap:wrap;}" +
                 ".card_item{   padding: 15px 15px 15px 15px;}" +
+                "h2{ color: blue;  font-family: verdana; text-align:center; padding: 5px 5px 5px 5px;}" +
                 "</style>";
+          
+            string[] words = nameCatalog.Split(new char[] { '\\' });
 
 
-
-
-            text += "<h2>" + "</h2>";
+            text += "<h2>" + words[words.Length-1] + "</h2>";
             text += "<div class=\"container\">";
             //background:#d3d3d3;
             foreach (var nameFile in nameFiles)
