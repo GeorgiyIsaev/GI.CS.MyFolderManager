@@ -15,7 +15,7 @@ namespace GI.CS.MyFolderManagerFoto
 
         public List<String> SplitName()
         {
-            List<String> nameItem = new List<String>(NameCatalog.Split(' ', '-'));
+            List<String> nameItem = new List<String>(NameCatalog.Split(' ', '-', '_'));
             nameItem.RemoveAll(EndsWithSaurus); //Удалить пустые строчки
             return nameItem;
         }
