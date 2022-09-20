@@ -37,7 +37,7 @@ namespace GI.CS.MyFolderManagerFoto
             text += "<style>" +
                 ".container .card_item{width: "+ width + "; border:1px solid gray; }" +
                 ".container{display:flex;flex-direction:row;flex-wrap:wrap;}" +
-                ".card_item{   padding: 15px 15px 15px 15px;}" +
+                ".card_item{ align: center valign: bottom }" + // padding: 15px 15px 15px 15px;
                 "h2{ color: blue;  font-family: verdana; text-align:center; padding: 5px 5px 5px 5px;}" +
                 "</style>";
           

@@ -58,7 +58,11 @@ namespace GI.CS.MyFolderManagerFoto
             /*Сохранить в файл*/
             using (var file = new StreamWriter("html.html", false, Encoding.UTF8))
             {
-                file.WriteLine(myWebBrowser.Document.ToString());            
+                dynamic webBrowserDocument = myWebBrowser.Document;
+                string html = webBrowserDocument?.documentElement?.InnerHtml;
+
+
+                file.WriteLine(html);            
                 System.Diagnostics.Process.Start("explorer", "html.html");
             }
         }
