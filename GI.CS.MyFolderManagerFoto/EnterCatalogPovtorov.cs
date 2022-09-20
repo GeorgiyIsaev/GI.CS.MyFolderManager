@@ -77,7 +77,8 @@ namespace GI.CS.MyFolderManagerFoto
 
             foreach (var item in temp.ListFolderName)
             {
-                infoCatalogSearch.Add(new InfoCatalog { NameCatalog = item, CountFile = ListCatalogCountFile(item) });
+               // infoCatalogSearch.Add(new InfoCatalog { NameCatalog = item, CountFile = ListCatalogCountFile(item) });
+                infoCatalog.Add(new InfoCatalog(item, Lebel_EnterCatalog.Content.ToString()));
             }
 
             DataGrid_Catalog.ItemsSource = infoCatalogSearch;

@@ -30,20 +30,20 @@ namespace GI.CS.MyFolderManagerFoto
             System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(Lebel_EnterCatalog.Content.ToString());
             foreach (var item in dir.GetDirectories())
             {
-                infoCatalog.Add(new InfoCatalog { NameCatalog = item.Name, CountFile = ListCatalogCountFile(item.Name) });
+                infoCatalog.Add(new InfoCatalog(item.Name, Lebel_EnterCatalog.Content.ToString()));
             }
             DataGrid_Catalog.ItemsSource = infoCatalog;
             DataGrid_Catalog.Items.Refresh();
 
 
         }
-        private int ListCatalogCountFile(string NameCatalog)
-        {
-           /*Считает количество файлов внутри папки*/
-            int countFile = new System.IO.DirectoryInfo(Lebel_EnterCatalog.Content + "\\" + NameCatalog)
-                .GetFiles("*.*", System.IO.SearchOption.AllDirectories).Length;
-            return countFile;
-        }
+        //private int ListCatalogCountFile(string NameCatalog)
+        //{
+        //   /*Считает количество файлов внутри папки*/
+        //    int countFile = new System.IO.DirectoryInfo(Lebel_EnterCatalog.Content + "\\" + NameCatalog)
+        //        .GetFiles("*.*", System.IO.SearchOption.AllDirectories).Length;
+        //    return countFile;
+        //}
 
 
 

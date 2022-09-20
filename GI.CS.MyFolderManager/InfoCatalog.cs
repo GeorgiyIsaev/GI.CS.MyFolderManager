@@ -9,9 +9,8 @@ namespace GI.CS.MyFolderManager
         public class InfoCatalog
         {
             public String NameCatalog { get; set; }
+       
             public int CountFile { get; set; }
-
-
 
             public List<String> SplitName()
             {  
@@ -24,6 +23,10 @@ namespace GI.CS.MyFolderManager
             {
                 return s.Length < 1;
             }
+
+           
+
+
         }   
     }
 }
