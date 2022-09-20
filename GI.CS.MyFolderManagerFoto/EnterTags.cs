@@ -56,19 +56,23 @@ namespace GI.CS.MyFolderManagerFoto
            
                 var d = btn.Tag;
 
-                if(val.Value.Count > 100)
+                if(val.Value.Count >= 100)
                 {
                     btn.Background = new SolidColorBrush(Colors.Red);
                 }
-                else if (val.Value.Count > 50)
+                else if (val.Value.Count >= 50)
+                {
+                    btn.Background = new SolidColorBrush(Colors.OrangeRed);
+                }
+                else if (val.Value.Count >= 25)
                 {
                     btn.Background = new SolidColorBrush(Colors.Orange);
                 }
-                else if (val.Value.Count > 10)
+                else if (val.Value.Count >= 10)
                 {
                     btn.Background = new SolidColorBrush(Colors.Yellow);
                 }
-                else if (val.Value.Count > 5)
+                else if (val.Value.Count >= 5)
                 {
                     btn.Background = new SolidColorBrush(Colors.Green);
                 }
