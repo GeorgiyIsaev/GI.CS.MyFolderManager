@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,6 +52,21 @@ namespace GI.CS.MyFolderManagerFoto
             }
         }
 
+        private void Button_OpenBrowser_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentFullNameCatalog.Length < 1) return;
+            /*Сохранить в файл*/
+            using (var file = new StreamWriter("html.html", false, Encoding.UTF8))
+            {
+                file.WriteLine(myWebBrowser.Document.ToString());            
+                System.Diagnostics.Process.Start("explorer", "html.html");
+            }
+        }
 
+        private void Button_OpenCatalog_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentFullNameCatalog.Length < 1) return;
+            System.Diagnostics.Process.Start("explorer", currentFullNameCatalog);
+        }
     }
 }
