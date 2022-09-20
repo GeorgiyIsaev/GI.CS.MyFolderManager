@@ -28,6 +28,7 @@ namespace GI.CS.MyFolderManagerFoto
                 
                 foreach (var tagName in val.tags)
                 {
+                  //.ToUpper()
                     AddDictionary(tagName, val.NameCatalog);
                 }
             }

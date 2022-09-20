@@ -51,14 +51,11 @@ namespace GI.CS.MyFolderManagerFoto
             int indexOfSubstring = NameCatalog.IndexOf(substring);
             if (indexOfSubstring < 0) return;
 
-            string textTags = NameCatalog.Substring(0, indexOfSubstring); 
+            string textTags = NameCatalog.Substring(0, indexOfSubstring);
 
+     
 
             List<string> nameItem = new List<string>(textTags.Split('.'));
-            
-            //if(nameItem.Count >1)
-            //    nameItem.RemoveAt(nameItem.Count-1);
-
             tags = new List<string>(nameItem);
 
 
