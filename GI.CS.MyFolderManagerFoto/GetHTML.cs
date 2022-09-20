@@ -37,8 +37,15 @@ namespace GI.CS.MyFolderManagerFoto
             text += "<style>" +
                 ".container .card_item{width: "+ width + "; border:1px solid gray; }" +
                 ".container{display:flex;flex-direction:row;flex-wrap:wrap;}" +
-                ".card_item{ align: center valign: bottom }" + // padding: 15px 15px 15px 15px;
+                ".card_item{ align: center valign: bottom padding: 15px 15px 15px 15px;}" + // 
                 "h2{ color: blue;  font-family: verdana; text-align:center; padding: 5px 5px 5px 5px;}" +
+//              //"  a:focus + .full {  display: block;}" +
+// //               ".pictures {  -webkit-column-count: 4;  -moz-column-count: 4;  column-count: 4;  -webkit-column-gap: 1em;  -moz-column-gap: 1em;  column-gap: 1em;  margin-bottom: -1em;}" +
+//"a {  display: inline-block;}" +
+//"img {  display: block;  width: 100%;  margin-bottom: 1em;} " +
+//".full {  display: none;  position: fixed;  left: 0;  top: 0;  right: 0;  bottom: 0;  padding: 8%;  background: #CCC center no-repeat;  background: rgba(0, 0, 0, 0.5) center no-repeat;" +
+//" background-size: contain;  background-origin: content-box;}" +
+//".full:target {  display: block;}"+
                 "</style>";
           
             string[] words = nameCatalog.Split(new char[] { '\\' });
@@ -49,9 +56,18 @@ namespace GI.CS.MyFolderManagerFoto
             //background:#d3d3d3;
             foreach (var nameFile in nameFiles)
             {
-                text += "<img class=\"card_item\" src=\"";
+                //text += "<a id=\"" + nameFile + "\" " +
+                //    "href=\"#\" class=\"full\" style=\"background-image:url(" + nameFile + ")\"></a>";
+                //text += " <a href=\"" +nameFile +"\">";
+
+               // text += "<a href = \"" + nameFile + "\" class=\"highslide\" onclick=\"a: focus\">";
+                text += "<img  class=\"card_item\"  src=\"";
                 text += "file://" + nameFile;
                 text += "\"width =\"100%\" title=\"" + nameFile + "\" border=\"0\" alt=\"" + nameFile + "\">";
+             //   text += "</a>";
+
+
+
             }
 
             text += "</div>";
