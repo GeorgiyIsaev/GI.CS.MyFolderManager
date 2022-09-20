@@ -61,6 +61,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="EnterTags.cs" />
     <Compile Include="GetHTML.cs" />
     <Compile Include="ParserDictionary.cs" />
     <Compile Include="SearchForMatch.cs" />

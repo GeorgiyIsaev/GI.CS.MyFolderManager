@@ -17,40 +17,27 @@ namespace GI.CS.MyFolderManagerFoto
                 Lebel_EnterCatalog.Content = dialog.SelectedPath;
                 ListCatalog();
                 ListCatalogMatch();
+                FormTagsLis();
             }
         }
 
-        ObservableCollection<InfoCatalog> infoCatalog = new ObservableCollection<InfoCatalog>(); //Каталог папок внтри папки
+        ObservableCollection<InfoCatalog> infoCatalogs = new ObservableCollection<InfoCatalog>(); //Каталог папок внтри папки
      
         private void ListCatalog()
         {
             /*Формирует катлог папок при входе в гланую папку*/
             DataGrid_Catalog.ItemsSource = null;
-            infoCatalog = new ObservableCollection<InfoCatalog>();
+            infoCatalogs = new ObservableCollection<InfoCatalog>();
             System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(Lebel_EnterCatalog.Content.ToString());
             foreach (var item in dir.GetDirectories())
             {
-                infoCatalog.Add(new InfoCatalog(item.Name, Lebel_EnterCatalog.Content.ToString()));
+                infoCatalogs.Add(new InfoCatalog(item.Name, Lebel_EnterCatalog.Content.ToString()));
             }
-            DataGrid_Catalog.ItemsSource = infoCatalog;
+            DataGrid_Catalog.ItemsSource = infoCatalogs;
             DataGrid_Catalog.Items.Refresh();
 
 
         }
-        //private int ListCatalogCountFile(string NameCatalog)
-        //{
-        //   /*Считает количество файлов внутри папки*/
-        //    int countFile = new System.IO.DirectoryInfo(Lebel_EnterCatalog.Content + "\\" + NameCatalog)
-        //        .GetFiles("*.*", System.IO.SearchOption.AllDirectories).Length;
-        //    return countFile;
-        //}
-
-
-
-
-
-
-
 
 
         string currentFullNameCatalog = "";

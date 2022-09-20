@@ -19,6 +19,7 @@ namespace GI.CS.MyFolderManagerFoto
         {
             NameCatalog = nameCatalog;
             FullNameCatalog = parentCatalog + "\\" + nameCatalog;
+            GetTags();
         }
         private int ListCatalogCountFile(string NameCatalog)
         {

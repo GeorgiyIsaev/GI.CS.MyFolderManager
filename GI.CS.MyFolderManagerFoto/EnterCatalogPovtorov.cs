@@ -21,7 +21,7 @@ namespace GI.CS.MyFolderManagerFoto
             /*Создает каталог с повтороами*/
 
             DataGrid_CatalogMatch.ItemsSource = null;
-            ParserDictionary.CreateNewFindMatcheCatalog(infoCatalog); //создадим словарь на основе содержимого каталога
+            ParserDictionary.CreateNewFindMatcheCatalog(infoCatalogs); //создадим словарь на основе содержимого каталога
 
             infoCatalogMatch = new ObservableCollection<SearchForMatch>();
             foreach (KeyValuePair<string, List<string>> item in ParserDictionary.catalogsKey)
@@ -44,7 +44,7 @@ namespace GI.CS.MyFolderManagerFoto
         {
             /*Выбрать минимальное кол-во слов в строке*/
             DataGrid_CatalogMatch.ItemsSource = null;
-            ParserDictionary.CreateNewFindMatcheCatalog(infoCatalog); //создадим словарь на основе содержимого каталога
+            ParserDictionary.CreateNewFindMatcheCatalog(infoCatalogs); //создадим словарь на основе содержимого каталога
 
             infoCatalogMatch = new ObservableCollection<SearchForMatch>();
             int inputCountWords;
@@ -78,7 +78,7 @@ namespace GI.CS.MyFolderManagerFoto
             foreach (var item in temp.ListFolderName)
             {
                // infoCatalogSearch.Add(new InfoCatalog { NameCatalog = item, CountFile = ListCatalogCountFile(item) });
-                infoCatalog.Add(new InfoCatalog(item, Lebel_EnterCatalog.Content.ToString()));
+                infoCatalogs.Add(new InfoCatalog(item, Lebel_EnterCatalog.Content.ToString()));
             }
 
             DataGrid_Catalog.ItemsSource = infoCatalogSearch;
