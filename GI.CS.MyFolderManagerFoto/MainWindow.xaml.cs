@@ -84,7 +84,7 @@ namespace GI.CS.MyFolderManagerFoto
             {
                 System.IO.Directory.Move(icurrentInfoCatalogGlob.FullNameCatalog, newName); //переименовали
             }
-            catch (Exception) { MessageBox.Show("Недопустимое имя!/тВозможно это имя уже занято!"); }
+            catch (Exception ex) { MessageBox.Show("Недопустимое имя!/тВозможно это имя уже занято!\n\n" + ex.Message); }
             RefreshCatalog();
         }
 
