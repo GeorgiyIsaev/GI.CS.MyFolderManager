@@ -9,7 +9,7 @@
         >
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Name="Column_0" Width="520" />
+            <ColumnDefinition Name="Column_0" Width="0" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="300" />
             <ColumnDefinition Width="Auto" />
@@ -34,29 +34,42 @@
                     <DataGridTextColumn Header="Папок" IsReadOnly="True" Binding="{Binding CountFind}"   MaxWidth="50" MinWidth="30" />
                 </DataGrid.Columns>
             </DataGrid>
-          
+
         </Grid>
         <GridSplitter Grid.Column="1" ShowsPreview="False" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
 
         <Grid Grid.Column="2">
-            <!--Грид для отображения каталогов-->
-            <Button x:Name="Button_V" Content=">" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="14" Click="Button_V_Click"/>
-            <Button Name="Button_EnterCatalog" Content="Выбрать папку" Margin="0,10,169,0" VerticalAlignment="Top" Click="Button_EnterCatalog_Click" HorizontalAlignment="Right" Width="102"/>
-            <Label Name="Lebel_EnterCatalog" Content="" Margin="136,6,10,0" VerticalAlignment="Top"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-            <DataGrid MouseDoubleClick="DataGrid_Catalog_MouseDoubleClick" CanUserAddRows="false" AutoGenerateColumns="False" Name="DataGrid_Catalog" Margin="10,37,10,10">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Название" IsReadOnly="True"   Binding="{Binding Path=NameCatalog}" Width="auto" MinWidth="100">
-                        <DataGridTextColumn.CellStyle>
-                            <Style TargetType="DataGridCell">
-                                <Setter Property="ToolTip" Value="{Binding Path=NameCatalog}" />
-                            </Style>
-                        </DataGridTextColumn.CellStyle>
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Header="Файлов" IsReadOnly="True" Binding="{Binding Path=CountFile}" Width="70"  MaxWidth="300" MinWidth="50" >
-                    </DataGridTextColumn>
-                </DataGrid.Columns>
-            </DataGrid>
+
+            <!--Грид для отображения каталогов-->
+            <Grid Grid.Row="0">
+                <Button x:Name="Button_V" Content=">" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="14" Click="Button_V_Click"/>
+                <Button Name="Button_EnterCatalog" Content="Выбрать папку" Margin="0,10,169,0" VerticalAlignment="Top" Click="Button_EnterCatalog_Click" HorizontalAlignment="Right" Width="102"/>
+                <Label Name="Lebel_EnterCatalog" Content="" Margin="136,6,10,0" VerticalAlignment="Top"/>
+            </Grid>
+
+            <GridSplitter Grid.Row="1" Grid.ColumnSpan="3" Height="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+
+            <Grid Grid.Row="2">
+                <DataGrid MouseDoubleClick="DataGrid_Catalog_MouseDoubleClick" CanUserAddRows="false" AutoGenerateColumns="False" Name="DataGrid_Catalog" Margin="10">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Название" IsReadOnly="True"   Binding="{Binding Path=NameCatalog}" Width="auto" MinWidth="100">
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="DataGridCell">
+                                    <Setter Property="ToolTip" Value="{Binding Path=NameCatalog}" />
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Файлов" IsReadOnly="True" Binding="{Binding Path=CountFile}" Width="70"  MaxWidth="300" MinWidth="50" >
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
         </Grid>
         <GridSplitter Grid.Column="3" ShowsPreview="False" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
 
@@ -67,7 +80,7 @@
             <Button x:Name="Button_OpenCatalog" Content="Открыть папку" Margin="291,4,0,0" VerticalAlignment="Top" Click="Button_OpenCatalog_Click" HorizontalAlignment="Left" Width="150"/>
 
             <WebBrowser Name="myWebBrowser" Margin="10,31,10,17" RenderTransformOrigin="0.297,0.473"/>
-                 </Grid>
+        </Grid>
 
     </Grid>
 </Window>
