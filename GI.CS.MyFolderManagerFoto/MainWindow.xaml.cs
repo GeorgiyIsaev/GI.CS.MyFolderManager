@@ -73,9 +73,17 @@ namespace GI.CS.MyFolderManagerFoto
             if (currentFullNameCatalog.Length < 1) return;
           
             System.Diagnostics.Process.Start("explorer", currentFullNameCatalog);
-
-            Path.Combine(@"D:\@@АРХИВ\0тест", "три четыри");
         }
 
+        private void Button_Raname_Click(object sender, RoutedEventArgs e)
+        {
+            if (icurrentInfoCatalogGlob == null) return;       
+            if (TextBox_NameCatalog.Text == "") return;
+            string newName = Lebel_EnterCatalog.Content + "\\" + TextBox_NameCatalog.Text;
+
+            System.IO.Directory.Move(icurrentInfoCatalogGlob.FullNameCatalog, newName); //переименовали
+        }
+
+   
     }
 }

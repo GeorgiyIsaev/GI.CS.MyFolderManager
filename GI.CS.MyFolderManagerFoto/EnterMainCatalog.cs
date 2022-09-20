@@ -19,7 +19,19 @@ namespace GI.CS.MyFolderManagerFoto
                 ListCatalogMatch();
                 FormTagsLis();
             }
+
         }
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            //Lebel_EnterCatalog.Content = dialog.SelectedPath;
+            TextBox_Tags.Children.Clear();
+            ListCatalog();
+            ListCatalogMatch();
+            FormTagsLis();
+        }
+
+
+
 
         ObservableCollection<InfoCatalog> infoCatalogs = new ObservableCollection<InfoCatalog>(); //Каталог папок внтри папки
      
@@ -41,13 +53,13 @@ namespace GI.CS.MyFolderManagerFoto
 
 
         string currentFullNameCatalog = "";
-
+        InfoCatalog icurrentInfoCatalogGlob;
         private void DataGrid_Catalog_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             /*Событие при двойном нажатии на таблицу*/
             string forever_papka = Lebel_EnterCatalog.Content + "\\" + ((InfoCatalog)DataGrid_Catalog.SelectedItem).NameCatalog;
-
-         
+            icurrentInfoCatalogGlob = ((InfoCatalog)DataGrid_Catalog.SelectedItem);
+            TextBox_NameCatalog.Text = ((InfoCatalog)DataGrid_Catalog.SelectedItem).NameCatalog;
             currentFullNameCatalog = forever_papka; 
             IsSizeWeb(); //открывает страницу
         }

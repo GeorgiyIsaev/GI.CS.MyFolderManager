@@ -50,7 +50,9 @@
             <Grid Grid.Row="0">
                 <Button x:Name="Button_V" Content=">" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="14" Click="Button_V_Click"/>
                 <Button Name="Button_EnterCatalog" Content="Выбрать папку" Margin="29,10,0,0" VerticalAlignment="Top" Click="Button_EnterCatalog_Click" HorizontalAlignment="Left" Width="102"/>
-                <Label Name="Lebel_EnterCatalog" Content="" Margin="0,6,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="154"/>
+                <Button Name="Refresh" Click="Refresh_Click" Content="↺ " HorizontalAlignment="Left" Margin="135,10,0,0" VerticalAlignment="Top" Width="17" RenderTransformOrigin="0.15,0.485"/>
+
+                <Label Name="Lebel_EnterCatalog" Content="" Margin="0,6,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="121"/>
                 <!--<ScrollViewer Name="SB_1"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="10,415,10,-315" Height="0" VerticalAlignment="Top" >-->
                 <Grid Margin="0,37,0,0">
                     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Top" >
@@ -58,7 +60,7 @@
                         </WrapPanel>
                     </ScrollViewer >
                 </Grid>
-                <!--<WrapPanel  Name="TextBox_Tags"  Margin="0,37,0,0">           
+                              <!--<WrapPanel  Name="TextBox_Tags"  Margin="0,37,0,0">           
                 </WrapPanel>-->
                 <!--</ScrollViewer>-->
             </Grid>
@@ -66,25 +68,25 @@
             <GridSplitter Grid.Row="1" Grid.ColumnSpan="3" Height="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
 
             <Grid Grid.Row="2">
-               <DataGrid MouseDoubleClick="DataGrid_Catalog_MouseDoubleClick" CanUserAddRows="false" AutoGenerateColumns="False" Name="DataGrid_Catalog" Margin="10">
+                <DataGrid MouseDoubleClick="DataGrid_Catalog_MouseDoubleClick" CanUserAddRows="false" AutoGenerateColumns="False" Name="DataGrid_Catalog" Margin="10">
                     <!--<DataGrid.ContextMenu>
                         <ContextMenu>
                             <MenuItem Header="Click Me" />
                         </ContextMenu>
                     </DataGrid.ContextMenu>-->
 
-                 
-                    <DataGrid.Columns>                        
+
+                    <DataGrid.Columns>
                         <DataGridTextColumn Header="Файлов" IsReadOnly="True" Binding="{Binding Path=CountFile}" Width="50"  MaxWidth="300" MinWidth="30" ></DataGridTextColumn>
                         <DataGridTextColumn Header="Название" IsReadOnly="True"   Binding="{Binding Path=NameCatalog}" Width="auto" MinWidth="100">
-                             <DataGridTextColumn.CellStyle>
+                            <DataGridTextColumn.CellStyle>
                                 <Style TargetType="DataGridCell">
                                     <Setter Property="ToolTip" Value="{Binding Path=NameCatalog}" />
                                 </Style>
                             </DataGridTextColumn.CellStyle>
                         </DataGridTextColumn>
                         <!--<DataGridTextColumn Header="Файлов" IsReadOnly="True" Binding="{Binding Path=CountFile}" Width="70"  MaxWidth="300" MinWidth="50" >-->
-                       
+
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
@@ -93,11 +95,13 @@
 
         <Grid Grid.Column="4">
             <!--Грид для просмотра картинок-->
-            <Button x:Name="Button_SizeWeb" Content="Увеличить" Margin="10,4,0,0" VerticalAlignment="Top" Click="Button_SizeWeb_Click" HorizontalAlignment="Left" Width="102"/>
-            <Button x:Name="Button_OpenBrowser" Content="Открыть в браузере" Margin="126,4,0,0" VerticalAlignment="Top" Click="Button_OpenBrowser_Click" HorizontalAlignment="Left" Width="150"/>
-            <Button x:Name="Button_OpenCatalog" Content="Открыть папку" Margin="291,4,0,0" VerticalAlignment="Top" Click="Button_OpenCatalog_Click" HorizontalAlignment="Left" Width="150"/>
+            <Button x:Name="Button_SizeWeb" Content="Увеличить" Margin="10,4,0,0" VerticalAlignment="Top" Click="Button_SizeWeb_Click" HorizontalAlignment="Left" Width="84"/>
+            <Button x:Name="Button_OpenBrowser" Content="Открыть в браузере" Margin="99,4,0,0" VerticalAlignment="Top" Click="Button_OpenBrowser_Click" HorizontalAlignment="Left" Width="131"/>
+            <Button x:Name="Button_OpenCatalog" Content="Открыть папку" Margin="235,4,0,0" VerticalAlignment="Top" Click="Button_OpenCatalog_Click" HorizontalAlignment="Left" Width="123"/>
 
             <WebBrowser Name="myWebBrowser" Margin="10,31,10,17" RenderTransformOrigin="0.297,0.473"/>
+            <TextBox Name="TextBox_NameCatalog" Height="23" Margin="402,3,118,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+            <Button  Name="Button_Raname" Click="Button_Raname_Click" Content="Переименовать" Margin="0,4,9,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="104"/>
         </Grid>
 
     </Grid>
