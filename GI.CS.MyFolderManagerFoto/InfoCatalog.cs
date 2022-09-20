@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ namespace GI.CS.MyFolderManagerFoto
     {
         public String NameCatalog { get; set; }
         public String FullNameCatalog { get; set; }
+        public String ParentCatalog { get; set; }
         public int CountFile { get; set; }
         public List<string> tags = new List<string>();
 
@@ -18,10 +20,12 @@ namespace GI.CS.MyFolderManagerFoto
         public InfoCatalog(string nameCatalog, string parentCatalog)
         {
             NameCatalog = nameCatalog;
+            ParentCatalog = parentCatalog;
             FullNameCatalog = parentCatalog + "\\" + nameCatalog;
             GetTags();
+            CountFile =  ListCatalogCountFile();
         }
-        private int ListCatalogCountFile(string NameCatalog)
+        private int ListCatalogCountFile()
         {
             /*Считает количество файлов внутри папки*/
             int countFile = new System.IO.DirectoryInfo(FullNameCatalog)
@@ -52,12 +56,17 @@ namespace GI.CS.MyFolderManagerFoto
 
             List<string> nameItem = new List<string>(textTags.Split('.'));
             
-            if(nameItem.Count >1)
-                nameItem.RemoveAt(nameItem.Count-1);
+            //if(nameItem.Count >1)
+            //    nameItem.RemoveAt(nameItem.Count-1);
 
             tags = new List<string>(nameItem);
 
 
+        }
+
+        public void OpenCatalog()
+        {
+            Path.Combine(ParentCatalog, NameCatalog);
         }
 
     }

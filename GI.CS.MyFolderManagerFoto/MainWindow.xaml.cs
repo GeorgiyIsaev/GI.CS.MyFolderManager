@@ -71,7 +71,10 @@ namespace GI.CS.MyFolderManagerFoto
         private void Button_OpenCatalog_Click(object sender, RoutedEventArgs e)
         {
             if (currentFullNameCatalog.Length < 1) return;
+          
             System.Diagnostics.Process.Start("explorer", currentFullNameCatalog);
+
+            Path.Combine(@"D:\@@АРХИВ\0тест", "три четыри");
         }
     }
 }
