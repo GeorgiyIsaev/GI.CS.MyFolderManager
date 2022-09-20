@@ -65,6 +65,7 @@ namespace GI.CS.MyFolderManagerFoto
                 file.WriteLine(html);            
                 System.Diagnostics.Process.Start("explorer", "html.html");
             }
+     
         }
 
         private void Button_OpenCatalog_Click(object sender, RoutedEventArgs e)

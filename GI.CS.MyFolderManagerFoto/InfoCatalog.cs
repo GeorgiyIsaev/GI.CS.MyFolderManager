@@ -43,7 +43,14 @@ namespace GI.CS.MyFolderManagerFoto
         private void GetTags()
         {
 
-            List<string> nameItem = new List<string>(NameCatalog.Split('.'));
+            string substring = " - ";
+            int indexOfSubstring = NameCatalog.IndexOf(substring);
+            if (indexOfSubstring < 0) return;
+
+            string textTags = NameCatalog.Substring(0, indexOfSubstring); 
+
+
+            List<string> nameItem = new List<string>(textTags.Split('.'));
             
             if(nameItem.Count >1)
                 nameItem.RemoveAt(nameItem.Count-1);

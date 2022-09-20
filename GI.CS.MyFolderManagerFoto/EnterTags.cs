@@ -1,18 +1,28 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace GI.CS.MyFolderManagerFoto
 {
     public partial class MainWindow
     {
-        public static Dictionary<string, List<string>> TagAndCatalogs;
+       
+
+        public static SortedDictionary<string, List<string>> TagAndCatalogs;
 
         private void FormTagsLis()
         {
-            TagAndCatalogs = new Dictionary<string, List<string>>();
+            TagAndCatalogs = new SortedDictionary<string, List<string>>();
 
             foreach (InfoCatalog val in infoCatalogs)
             {
+                if(val.tags.Count == 0)
+                {
+                    AddDictionary("!Нет тега!", val.NameCatalog);
+                    continue;
+                }                
+                
                 foreach (var tagName in val.tags)
                 {
                     AddDictionary(tagName, val.NameCatalog);
@@ -30,18 +40,29 @@ namespace GI.CS.MyFolderManagerFoto
         }
 
         private void EnterToTags()
-        {
-            string text = "";
+        {       
             foreach(var val in TagAndCatalogs)
             {
                 Button btn = new Button();
                 btn.Content = " " + val.Key + " (" + val.Value.Count + ")";
-                TextBox_Tags.Children.Add(btn);
-       
-               // text += val.Key + "(" + val.Value.Count + ")";
-            }
+                btn.Click += MyBtn_Click;
 
-           // TextBox_Tags.Text = text; 
+
+
+
+
+                TextBox_Tags.Children.Add(btn);    
+
+                //добавить действие с заполнением таблицы
+            }
+        } 
+        private void MyBtn_Click(Object sender, EventArgs e)
+        {
+
+            MessageBox.Show("");
+            //MyMethod((sender as Button).Tag);
         }
+
+
     }
 }
