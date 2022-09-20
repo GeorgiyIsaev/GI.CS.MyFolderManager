@@ -66,11 +66,18 @@
             <GridSplitter Grid.Row="1" Grid.ColumnSpan="3" Height="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
 
             <Grid Grid.Row="2">
-                <DataGrid MouseDoubleClick="DataGrid_Catalog_MouseDoubleClick" CanUserAddRows="false" AutoGenerateColumns="False" Name="DataGrid_Catalog" Margin="10">
-                    <DataGrid.Columns>
+               <DataGrid MouseDoubleClick="DataGrid_Catalog_MouseDoubleClick" CanUserAddRows="false" AutoGenerateColumns="False" Name="DataGrid_Catalog" Margin="10">
+                    <!--<DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Click Me" />
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>-->
+
+                 
+                    <DataGrid.Columns>                        
                         <DataGridTextColumn Header="Файлов" IsReadOnly="True" Binding="{Binding Path=CountFile}" Width="50"  MaxWidth="300" MinWidth="30" ></DataGridTextColumn>
                         <DataGridTextColumn Header="Название" IsReadOnly="True"   Binding="{Binding Path=NameCatalog}" Width="auto" MinWidth="100">
-                            <DataGridTextColumn.CellStyle>
+                             <DataGridTextColumn.CellStyle>
                                 <Style TargetType="DataGridCell">
                                     <Setter Property="ToolTip" Value="{Binding Path=NameCatalog}" />
                                 </Style>
