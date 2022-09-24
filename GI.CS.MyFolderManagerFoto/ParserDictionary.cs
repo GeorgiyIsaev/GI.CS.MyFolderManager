@@ -11,11 +11,11 @@ namespace GI.CS.MyFolderManagerFoto
     public static class ParserDictionary
     {
         public static Dictionary<string, List<string>> catalogsKey;
-        public static void CreateNewFindMatcheCatalog(ObservableCollection<InfoCatalog> infoCatalog)
+        public static void CreateNewFindMatcheCatalog(ObservableCollection<InfoCatalog> infoCatalogs)
         {
             /*Начинаем поиск схожих каталогов*/
             catalogsKey = new Dictionary<string, List<string>>();
-            foreach (var catalog in infoCatalog)
+            foreach (var catalog in infoCatalogs)
             {
                 var currentCatalog = catalog.SplitName();
                 int count = currentCatalog.Count;

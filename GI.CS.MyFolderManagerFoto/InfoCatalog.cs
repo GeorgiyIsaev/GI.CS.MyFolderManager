@@ -36,7 +36,13 @@ namespace GI.CS.MyFolderManagerFoto
         {
             List<string> nameItem = new List<string>(NameCatalog.Split(' ', '-', '_'));
             nameItem.RemoveAll(EndsWithSaurus); //Удалить пустые строчки
-            return nameItem;
+           
+            List<string> nameItemLower = new List<string>();
+            nameItem.ForEach(delegate (string name)
+            {
+                nameItemLower.Add(name.ToLower());
+            });
+            return nameItemLower;
         }
         private static bool EndsWithSaurus(string s)
         {
