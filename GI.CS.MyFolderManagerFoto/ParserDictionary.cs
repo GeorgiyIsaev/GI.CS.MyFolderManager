@@ -17,10 +17,9 @@ namespace GI.CS.MyFolderManagerFoto
             catalogsKey = new Dictionary<string, List<string>>();
             foreach (var catalog in infoCatalogs)
             {
-                var currentCatalog = catalog.SplitName();
-                int count = currentCatalog.Count;
+                var currentCatalog = catalog.SplitName();              
 
-                for (int i = 0; i < count; i++)
+                for (int i = 0; i < currentCatalog.Count; i++)
                 {
                     string key = "";
                     int tempCur = i;
@@ -29,8 +28,12 @@ namespace GI.CS.MyFolderManagerFoto
                         key += currentCatalog[tempCur];
                         AddDictionary(key, catalog.NameCatalog);
                         tempCur++;
-                        if (tempCur >= count) break;
+                        if (tempCur >= currentCatalog.Count) break;
                         key += " ";
+
+                        /*Если шаблон повторяется в одной строке манга дублируется
+                         Как решить эту проблему?
+                        -*/
                     }
                 }
             }
@@ -38,7 +41,6 @@ namespace GI.CS.MyFolderManagerFoto
 
         public static void AddDictionary(string key, string item)
         {
-
             if (!catalogsKey.ContainsKey(key))
             {
                 catalogsKey[key] = new List<string>();

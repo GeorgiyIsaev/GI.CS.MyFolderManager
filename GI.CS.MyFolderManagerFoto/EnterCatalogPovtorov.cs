@@ -34,8 +34,7 @@ namespace GI.CS.MyFolderManagerFoto
             DeleteSameResults();
             DataGrid_CatalogMatch.ItemsSource = infoCatalogMatch;
             DataGrid_CatalogMatch.Items.Refresh();
-            TB_CountM.Text = "Всего: " + infoCatalogMatch.Count;
-         
+            TB_CountM.Text = "Всего: " + infoCatalogMatch.Count;         
         }
 
 
@@ -95,6 +94,8 @@ namespace GI.CS.MyFolderManagerFoto
 
             List<SearchForMatch> tempList = new List<SearchForMatch>(infoCatalogMatch);
             List<SearchForMatch> tempList_new = new List<SearchForMatch>();
+
+            
 
             foreach (var item in tempList)
             {
