@@ -35,6 +35,7 @@ namespace GI.CS.MyFolderManagerFoto
                 }
             }
             EnterToTags();
+            SortTagsForCount();
         }
         private static void AddDictionary(string key, string item)
         {
@@ -45,7 +46,32 @@ namespace GI.CS.MyFolderManagerFoto
             TagAndCatalogs[key].Add(item);
         }
 
-     
+        private void SortTagsForCount()
+        {     
+            List<Button> lisyBtns = new List<Button>();
+            foreach (var btn in TextBox_Tags.Children)
+            {
+                lisyBtns.Add((Button)btn);
+            }
+            lisyBtns.Sort(delegate (Button x, Button y)
+            {
+                KeyValuePair<string, List<string>> paraX = ((KeyValuePair<string, List<string>>)x.Tag);
+                KeyValuePair<string, List<string>> paraY = ((KeyValuePair<string, List<string>>)y.Tag);
+
+
+                if (paraX.Value.Count < paraY.Value.Count) return 1;
+                else if (paraX.Value.Count == paraY.Value.Count) return 0;
+                else return -1;
+    
+            });
+
+            TextBox_Tags.Children.Clear();
+            foreach (var val in lisyBtns)
+            {
+                TextBox_Tags.Children.Add(val);
+            }
+        }
+
 
 
         private void EnterToTags()
@@ -68,7 +94,7 @@ namespace GI.CS.MyFolderManagerFoto
                 else if (val.Value.Count >= 50)
                 {
                     btn.Background = new SolidColorBrush(Colors.DarkOrange);
-                    btn.Foreground = new SolidColorBrush(Colors.Gold);
+                    btn.Foreground = new SolidColorBrush(Colors.Red);
                 }
                 else if (val.Value.Count >= 25)
                 {
