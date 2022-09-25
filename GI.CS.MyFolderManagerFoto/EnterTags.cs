@@ -17,7 +17,7 @@ namespace GI.CS.MyFolderManagerFoto
         private void FormTagsLis()
         {
             TagAndCatalogs = new SortedDictionary<string, List<string>>();
-
+            TextBox_Tags.Children.Clear();
             foreach (InfoCatalog val in infoCatalogs)
             {
                 AddDictionary("All", val.NameCatalog);
@@ -34,9 +34,26 @@ namespace GI.CS.MyFolderManagerFoto
                     AddDictionary(tagName, val.NameCatalog);
                 }
             }
-            EnterToTags();
-            SortTagsForCount();
+            EnterToTags();        
         }
+
+        bool isSort = false;
+        private void Button_SortTags_Click(object sender, RoutedEventArgs e)
+        {
+            if (!isSort)
+            {
+                isSort = true;
+                SortTagsForCount();
+            }
+            else
+            {
+                isSort = false;
+                TextBox_Tags.Children.Clear();
+                EnterToTags();
+            }
+        }
+
+
         private static void AddDictionary(string key, string item)
         {
             if (!TagAndCatalogs.ContainsKey(key))

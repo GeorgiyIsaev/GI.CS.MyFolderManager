@@ -52,7 +52,7 @@
                 <Button Name="Button_EnterCatalog" Content="Выбрать папку" Margin="29,10,0,0" VerticalAlignment="Top" Click="Button_EnterCatalog_Click" HorizontalAlignment="Left" Width="102"/>
                 <Button Name="Refresh" Click="Refresh_Click" Content="↺ " HorizontalAlignment="Left" Margin="135,10,0,0" VerticalAlignment="Top" Width="17" RenderTransformOrigin="0.15,0.485"/>
 
-                <Label Name="Lebel_EnterCatalog" Content="" Margin="169,6,10,0" VerticalAlignment="Top"/>
+                <Label Name="Lebel_EnterCatalog" Content="" Margin="174,6,10,0" VerticalAlignment="Top"/>
                 <!--<ScrollViewer Name="SB_1"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="10,415,10,-315" Height="0" VerticalAlignment="Top" >-->
                 <Grid Margin="0,37,0,0">
                     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Top" >
@@ -60,6 +60,7 @@
                         </WrapPanel>
                     </ScrollViewer >
                 </Grid>
+                <Button x:Name="Button_SortTags" Click="Button_SortTags_Click" Content="^" HorizontalAlignment="Left" Margin="157,10,0,0" VerticalAlignment="Top" Width="17" RenderTransformOrigin="0.15,0.485"/>
                 <!--<WrapPanel  Name="TextBox_Tags"  Margin="0,37,0,0">           
                 </WrapPanel>-->
                 <!--</ScrollViewer>-->

@@ -27,6 +27,7 @@ namespace GI.CS.MyFolderManagerFoto
 
         private void RefreshCatalog()
         {
+            isSort = false;
             TextBox_Tags.Children.Clear();
             ListCatalog();
             ListCatalogMatch();

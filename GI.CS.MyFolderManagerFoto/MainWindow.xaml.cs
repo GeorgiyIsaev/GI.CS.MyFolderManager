@@ -88,6 +88,6 @@ namespace GI.CS.MyFolderManagerFoto
             RefreshCatalog();
         }
 
-   
+       
     }
 }
