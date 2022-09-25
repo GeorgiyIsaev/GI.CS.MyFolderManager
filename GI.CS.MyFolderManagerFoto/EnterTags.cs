@@ -45,6 +45,9 @@ namespace GI.CS.MyFolderManagerFoto
             TagAndCatalogs[key].Add(item);
         }
 
+     
+
+
         private void EnterToTags()
         {       
             foreach(var val in TagAndCatalogs)
@@ -59,10 +62,13 @@ namespace GI.CS.MyFolderManagerFoto
                 if(val.Value.Count >= 100)
                 {
                     btn.Background = new SolidColorBrush(Colors.Red);
+                    btn.FontWeight = FontWeights.Bold;
+                    btn.Foreground = new SolidColorBrush(Colors.Gold);
                 }
                 else if (val.Value.Count >= 50)
                 {
-                    btn.Background = new SolidColorBrush(Colors.OrangeRed);
+                    btn.Background = new SolidColorBrush(Colors.DarkOrange);
+                    btn.Foreground = new SolidColorBrush(Colors.Gold);
                 }
                 else if (val.Value.Count >= 25)
                 {
@@ -76,6 +82,15 @@ namespace GI.CS.MyFolderManagerFoto
                 {
                     btn.Background = new SolidColorBrush(Colors.LightGreen);
                 }
+                else if (val.Value.Count >= 2)
+                {
+                    btn.Background = new SolidColorBrush(Colors.GreenYellow);
+                }
+                else if (val.Value.Count >= 1)
+                {
+                    btn.Background = new SolidColorBrush(Colors.White);
+                }
+
                 btn.Click += Button_EnterTag;
                 TextBox_Tags.Children.Add(btn);    
 
