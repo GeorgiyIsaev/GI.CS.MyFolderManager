@@ -134,6 +134,13 @@ namespace GI.CS.MyFolderManagerFoto
                     btn.Background = new SolidColorBrush(Colors.White);
                 }
 
+                if (val.Key == "!Нет тега!" || val.Key == "All")
+                {
+                    btn.Background = new SolidColorBrush(Colors.Blue);
+                    btn.Foreground = new SolidColorBrush(Colors.White);
+                    btn.FontWeight = FontWeights.Bold;
+                }
+
                 btn.Click += Button_EnterTag;
                 TextBox_Tags.Children.Add(btn);    
 
